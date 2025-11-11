@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --primary-background: #ffffff;
+  --secondary-background: var(--color-gray-100);
+  --border-color: #e5e7eb;
+  --body-text-color: var(--color-gray-900);
+  --secondary-text-color: var(--color-gray-500);
+  --heading-color: black;
+}
+
+@theme inline {
+  --font-open-sans: var(--open-sans-font);
+  --font-kufi: var(--kufi-font);
+
+  --color-emerald-green: #10b981;
+  --color-teal: #14b8a6;
+  --color-border: var(--border-color);
+  --color-body: var(--body-text-color);
+  --color-heading: var(--heading-color);
+  --color-primary-background: var(--primary-background);
+  --color-secondary-background: var(--secondary-background);
+  --color-secondary: var(--secondary-text-color);
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #06b6d4;
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+  }
+}
+
+.dark {
+  --primary-background: #111827;
+  --secondary-background: var(--color-gray-700);
+  --border-color: #374151;
+  --body-text-color: var(--color-gray-100);
+  --secondary-text-color: var(--color-gray-400);
+  --heading-color: white;
+}
+
+@utility bg-gradient {
+  @apply from-emerald-green to-teal bg-linear-to-r;
+}
+
+@utility button {
+  @apply bg-gradient focus:ring-emerald-green focus:outline-emerald-green w-full cursor-pointer rounded-2xl px-4 py-3 font-semibold text-white select-none hover:opacity-90 focus:outline-2 focus:outline-offset-2;
+}
