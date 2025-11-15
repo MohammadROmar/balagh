@@ -5,9 +5,9 @@ import PowerIcon from '@/assets/icons/power';
 import ShieldIcon from '@/assets/icons/shield';
 import UsersIcon from '@/assets/icons/users';
 import Pattern from '@/assets/icons/pattern';
-import type { TranslationFunction } from '@/shared/models/translation-function';
+import type { TFunction } from '@/shared/models/tfunction';
 
-type SidePanelProps = { t: TranslationFunction };
+type SidePanelProps = { t: TFunction<'loginPage'> };
 
 function SidePanel({ t }: SidePanelProps) {
   return (

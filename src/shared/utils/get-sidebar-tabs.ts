@@ -1,0 +1,29 @@
+import AddUserIcon from '@/assets/icons/add-user';
+import ComplaintIcon from '@/assets/icons/complaint';
+import OverviewIcon from '@/assets/icons/overview';
+import type { TFunction } from '../models/tfunction';
+
+export function getSidebarTabs(
+  role: 'Administrator' | 'Employee',
+  t: TFunction<'sidebar'>,
+) {
+  if (role === 'Administrator') {
+    return [
+      { label: t('admin.overview'), href: '/admin', icon: OverviewIcon },
+      {
+        label: t('admin.registerEmployee'),
+        href: '/admin/register-employee',
+        icon: AddUserIcon,
+      },
+    ];
+  }
+
+  return [
+    { label: t('employee.overview'), href: '/dashboard', icon: OverviewIcon },
+    {
+      label: t('employee.complaintes'),
+      href: '/dashboard/complaintes',
+      icon: ComplaintIcon,
+    },
+  ];
+}

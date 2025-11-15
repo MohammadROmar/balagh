@@ -9,22 +9,61 @@
     "theme-toggle": {
       "dark": "Toggle dark mode",
       "light": "Toggle light mode"
-    }
+    },
+    "pending": "Pending..."
   },
   "loginPage": {
     "title": "Balagh",
     "subtitle": "Please enter your details to sign in.",
-    "email": "Email Address",
-    "password": "Password",
-    "login": "Login",
     "forgotPassword": "Forgot Password?",
+    "login": "Login",
     "description": "Efficient complaint management starts here",
     "actions": "Monitor, assign, and resolve with confidence."
   },
-  "errors": {
-    "input": {
-      "email": "Please enter a valid email address",
-      "password": "Please enter a valid password"
+  "adminPages": {
+    "registerEmployee": {
+      "title": "Add New Employee",
+      "subtitle": "Create a profile for a new employee",
+      "registered": "Employee registered successfully"
     }
+  },
+  "sidebar": {
+    "title": "Balagh",
+    "logout": "Logout",
+    "admin": {
+      "overview": "Overview",
+      "registerEmployee": "Register Employee"
+    },
+    "employee": { "overview": "Overview", "complaintes": "Complaintes" }
+  },
+  "forms": {
+    "labels": {
+      "username": "Username",
+      "phoneNumber": "Phone Number",
+      "emailAddress": "Email Address",
+      "password": "Password"
+    },
+    "errors": {
+      "email": "Please enter a valid email address",
+      "password": "Please enter a valid password",
+      "username": "Please enter a unique username",
+      "phoneNumber": "Please enter a correct phone number (e.g. 09********)"
+    },
+    "actions": {
+      "register": "Register",
+      "reset": "Reset"
+    },
+    "placeholders": {
+      "username": "Enter a uniqe username",
+      "phoneNumber": "Enater phone number",
+      "emailAddress": "e.g. example@balagh.com",
+      "password": "Enter a secure password"
+    }
+  },
+  "errors": {
+    "unknown": "Unknow error has occured. Please check your internet connection and try again later",
+    "server-error": "Could not connect to the server. Please try again later",
+    "invalid-role": "An error occurred while trying to complete the operation. You are unauthorized",
+    "failure": "An error occurred while trying to complete the operation. Please check your internet connection and try again later"
   }
 }

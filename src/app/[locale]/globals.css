@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --primary-background: #ffffff;
-  --secondary-background: var(--color-gray-100);
+  --primary-background: var(--color-gray-100);
+  --secondary-background: #ffffff;
   --border-color: #e5e7eb;
   --body-text-color: var(--color-gray-900);
   --secondary-text-color: var(--color-gray-500);
@@ -15,8 +15,8 @@
   --font-open-sans: var(--open-sans-font);
   --font-kufi: var(--kufi-font);
 
-  --color-emerald-green: #10b981;
-  --color-teal: #14b8a6;
+  --color-emerald-green: var(--color-emerald-500);
+  --color-teal: var(--color-teal-500);
   --color-border: var(--border-color);
   --color-body: var(--body-text-color);
   --color-heading: var(--heading-color);
@@ -29,6 +29,7 @@
   --color-info: #06b6d4;
 
   --animate-float: float 6s ease-in-out infinite;
+  --animate-fade: fade 1s ease-in-out infinite;
 
   @keyframes float {
     0%,
@@ -45,11 +46,20 @@
       transform: translateY(-10px) rotate(-1deg);
     }
   }
+
+  @keyframes fade {
+    from {
+      opacity: 100;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 }
 
 .dark {
   --primary-background: #111827;
-  --secondary-background: var(--color-gray-700);
+  --secondary-background: var(--color-gray-800);
   --border-color: #374151;
   --body-text-color: var(--color-gray-100);
   --secondary-text-color: var(--color-gray-400);
@@ -61,5 +71,5 @@
 }
 
 @utility button {
-  @apply bg-gradient focus:ring-emerald-green focus:outline-emerald-green w-full cursor-pointer rounded-2xl px-4 py-3 font-semibold text-white select-none hover:opacity-90 focus:outline-2 focus:outline-offset-2;
+  @apply bg-gradient focus:ring-emerald-green focus:outline-emerald-green w-full cursor-pointer rounded-2xl px-4 py-2 font-medium text-white transition-transform duration-500 select-none hover:scale-95 focus:outline-2 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-75;
 }

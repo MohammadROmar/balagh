@@ -5,7 +5,9 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
 import Input from '@/shared/components/input';
-import { loginAction } from '../api/action';
+import { loginAction } from '../api/login';
+import FormErrors from '@/shared/components/form-errors';
+import LoadingIndicator from '@/assets/icons/loading-indicator';
 
 export default function LoginForm() {
   const [state, formAction, pending] = useActionState(loginAction, {
@@ -14,29 +16,27 @@ export default function LoginForm() {
   });
 
   const tLogin = useTranslations('loginPage');
-  const tErrors = useTranslations('errors.input');
+  const tForms = useTranslations('forms');
 
   return (
     <form action={formAction} className="mt-8 space-y-6">
       <Input
         type="email"
         id="email"
-        required
         defaultValue={state.email}
         autoComplete="email"
-        placeholder="example@mail.com"
-        label={tLogin('email')}
-        error={state.errors.email ? tErrors('email') : undefined}
+        placeholder={tForms('placeholders.emailAddress')}
+        label={tForms('labels.emailAddress')}
+        error={state.errors.email ? tForms('errors.email') : undefined}
       />
       <Input
         type="password"
         id="password"
-        required
         defaultValue={state.password}
         autoComplete="current-password"
-        placeholder="********"
-        label={tLogin('password')}
-        error={state.errors.password ? tErrors('password') : undefined}
+        placeholder={tForms('placeholders.password')}
+        label={tForms('labels.password')}
+        error={state.errors.password ? tForms('errors.password') : undefined}
       />
 
       <div className="flex justify-end">
@@ -45,9 +45,15 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      <button disabled={pending} className="button">
-        {tLogin('login')}
+      <button
+        disabled={pending}
+        aria-live="polite"
+        className="button flex items-center justify-center"
+      >
+        {pending ? <LoadingIndicator className="w-7" /> : tLogin('login')}
       </button>
+
+      <FormErrors message={state.message} />
     </form>
   );
 }
