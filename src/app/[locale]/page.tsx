@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from 'next-intl';
 
@@ -5,6 +6,7 @@ import ThemeToggle from '@/shared/components/theme-toggle';
 import LocaleToggle from '@/shared/components/locale-toggle';
 import LoginForm from '@/features/auth/components/login-form';
 import SidePanel from '@/features/auth/components/side-panel';
+import logoImg from '@/assets/images/logo.png';
 
 type HomeProps = { params: Promise<{ locale: Locale }> };
 
@@ -20,9 +22,20 @@ async function HomePage({ params }: HomeProps) {
       <section className="flex-1 px-4 lg:px-20 xl:px-24">
         <div className="m-auto flex min-h-screen w-full max-w-96 flex-col items-center justify-center space-y-8 py-12 lg:w-96">
           <div className="flex w-full items-center justify-between">
-            <h1 className="text-heading text-2xl font-bold tracking-tight">
-              {t('title')}
-            </h1>
+            <div className="flex items-center gap-2">
+              <div className="relative size-7">
+                <Image
+                  src={logoImg}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="28px"
+                  className="object-contain object-center"
+                />
+              </div>
+              <h1 className="text-2xl font-bold">{t('title')}</h1>
+            </div>
+
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <LocaleToggle />

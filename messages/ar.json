@@ -10,6 +10,10 @@
       "light": "تفعيل الوضع الفاتح",
       "dark": "تفعيل الوضع الداكن"
     },
+    "sidebar": {
+      "open": "فتح القائمة الجانبية",
+      "close": "اغلاق القائمة الجانبية"
+    },
     "pending": "يتم التنفيذ..."
   },
   "loginPage": {
@@ -30,11 +34,13 @@
   "sidebar": {
     "title": "بلاغ",
     "logout": "تسجيل الخروج",
+    "cancel": "إلغاء",
     "admin": {
       "overview": "نظرة عامة",
       "registerEmployee": "تسجيل موظف"
     },
-    "employee": { "overview": "نظرة عامة", "complaintes": "الشكاوى" }
+    "employee": { "overview": "نظرة عامة", "complaintes": "الشكاوى" },
+    "logoutDescription": "هل أنت متأكد من رغبتك في تسجيل الخروج؟"
   },
   "forms": {
     "labels": {

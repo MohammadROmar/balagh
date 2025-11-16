@@ -10,6 +10,10 @@
       "dark": "Toggle dark mode",
       "light": "Toggle light mode"
     },
+    "sidebar": {
+      "open": "Close sidebar",
+      "close": "Open sidebar"
+    },
     "pending": "Pending..."
   },
   "loginPage": {
@@ -30,11 +34,13 @@
   "sidebar": {
     "title": "Balagh",
     "logout": "Logout",
+    "cancel": "Cancel",
     "admin": {
       "overview": "Overview",
       "registerEmployee": "Register Employee"
     },
-    "employee": { "overview": "Overview", "complaintes": "Complaintes" }
+    "employee": { "overview": "Overview", "complaintes": "Complaintes" },
+    "logoutDescription": "Are you sure you want to logout?"
   },
   "forms": {
     "labels": {

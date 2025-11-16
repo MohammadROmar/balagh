@@ -30,6 +30,7 @@
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-fade: fade 1s ease-in-out infinite;
+  --animate-fade-in: fade-in 0.25s ease-in;
 
   @keyframes float {
     0%,
@@ -46,7 +47,14 @@
       transform: translateY(-10px) rotate(-1deg);
     }
   }
-
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
   @keyframes fade {
     from {
       opacity: 100;

@@ -6,6 +6,7 @@ import type { PropsWithChildren } from 'react';
 import Sidebar from '@/shared/components/sidebar';
 import { redirect } from '@/i18n/navigation';
 import type { User } from '@/config/models/user';
+import Header from '@/shared/components/header';
 
 async function AdminLayout({ children }: PropsWithChildren) {
   const cookieStore = await cookies();
@@ -32,12 +33,16 @@ async function AdminLayout({ children }: PropsWithChildren) {
   }
 
   return (
-    <div className="h-screen max-h-screen grid-cols-[auto_auto_1fr] lg:grid">
+    <div className="h-screen max-h-screen grid-cols-[auto_auto_auto_1fr] lg:grid">
       <Toaster />
+      <div id="modals" />
       <Sidebar role="Administrator" />
-      <main className="m-auto grid size-full max-w-5xl overflow-auto p-4 lg:p-8">
-        {children}
-      </main>
+      <div className="grid size-full grid-rows-[auto_1fr]">
+        <Header />
+        <main className="m-auto grid size-full max-w-5xl overflow-auto p-4 lg:p-8">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

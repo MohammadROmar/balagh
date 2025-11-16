@@ -36,9 +36,12 @@ export default function ThemeToggle() {
           )}
         >
           {isDark ? (
-            <SunIcon aria-hidden className="size-4 md:size-5" />
+            <SunIcon aria-hidden className="size-4 shrink-0 md:size-5" />
           ) : (
-            <MoonIcon aria-hidden className="size-4 -rotate-90 md:size-5" />
+            <MoonIcon
+              aria-hidden
+              className="size-4 shrink-0 -rotate-90 md:size-5"
+            />
           )}
         </button>
       ) : (
