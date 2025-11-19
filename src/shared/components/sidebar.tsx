@@ -35,46 +35,49 @@ function Sidebar({ role }: SidebarProps) {
         id="sidebar"
         aria-live="polite"
         className={clsx(
-          'bg-secondary-background fixed inset-y-0 z-50 grid w-80 max-w-[90vw] grid-rows-[auto_auto_1fr] border-r border-gray-300 transition-transform duration-500 lg:static ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
+          'bg-secondary-background max-w-[90vw]border-r fixed inset-y-0 z-50 w-80 border-gray-300 transition-transform duration-500 lg:static ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
           isOpen && 'translate-x-0!',
         )}
       >
-        <div className="flex items-center justify-between p-4">
-          <div className="flex items-center gap-2">
-            <div className="relative size-7">
-              <Image
-                src={logoImg}
-                alt=""
-                aria-hidden
-                fill
-                sizes="28px"
-                className="object-contain object-center"
-              />
+        <nav className="grid h-full grid-rows-[auto_auto_1fr]">
+          <div className="flex items-center justify-between p-4">
+            <div className="flex items-center gap-2">
+              <div className="relative size-7">
+                <Image
+                  src={logoImg}
+                  alt=""
+                  aria-hidden
+                  fill
+                  sizes="28px"
+                  className="object-contain object-center"
+                />
+              </div>
+              <h1 className="text-2xl font-bold">{t('title')}</h1>
             </div>
-            <h1 className="text-2xl font-bold">{t('title')}</h1>
+
+            {isOpen && <CloseMenu />}
           </div>
 
-          {isOpen && <CloseMenu />}
-        </div>
+          <ul className="bort space-y-2 p-4">
+            {tabs.map((tab) => (
+              <SidebarLink
+                key={tab.href}
+                {...tab}
+                onNvaigate={() => setIsOpen(false)}
+                icon={<tab.icon className="size-6 shrink-0" />}
+              />
+            ))}
+          </ul>
 
-        <ul className="bort space-y-2 p-4">
-          {tabs.map((tab) => (
-            <SidebarLink
-              key={tab.href}
-              {...tab}
-              icon={<tab.icon className="size-6 shrink-0" />}
-            />
-          ))}
-        </ul>
+          <div className="m-4 flex flex-col justify-end space-y-2">
+            <Logout />
 
-        <div className="m-4 flex flex-col justify-end space-y-2">
-          <Logout />
-
-          <div className="bg-primary-background flex items-center justify-center gap-2 rounded-2xl p-2 lg:hidden">
-            <ThemeToggle />
-            <LocaleToggle />
+            <div className="bg-primary-background flex items-center justify-center gap-2 rounded-2xl p-2 lg:hidden">
+              <ThemeToggle />
+              <LocaleToggle />
+            </div>
           </div>
-        </div>
+        </nav>
       </aside>
     </>
   );

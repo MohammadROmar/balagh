@@ -15,14 +15,19 @@ export function getSidebarTabs(
         href: '/admin/register-employee',
         icon: AddUserIcon,
       },
+      {
+        label: t('admin.complaints'),
+        href: '/admin/complaints',
+        icon: ComplaintIcon,
+      },
     ];
   }
 
   return [
     { label: t('employee.overview'), href: '/dashboard', icon: OverviewIcon },
     {
-      label: t('employee.complaintes'),
-      href: '/dashboard/complaintes',
+      label: t('employee.complaints'),
+      href: '/dashboard/complaints',
       icon: ComplaintIcon,
     },
   ];

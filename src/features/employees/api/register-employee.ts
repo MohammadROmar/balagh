@@ -69,7 +69,6 @@ export async function registerEmployeeAction(
     return { message: 'server-error', errors, defaultValues: credentials };
   }
 
-  console.log('first');
   return { message: 'success', errors, defaultValues: credentials };
 }
 

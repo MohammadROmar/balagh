@@ -23,8 +23,6 @@ export default function middleware(request: NextRequest) {
 function authProxy(request: NextRequest, response: NextResponse | undefined) {
   const { pathname } = request.nextUrl;
 
-  console.log(pathname);
-
   if (isProtectedRoute(pathname)) {
     const isAuthenticated = !!request.cookies.get('access_token')?.value;
 

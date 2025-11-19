@@ -23,10 +23,14 @@
   --color-primary-background: var(--primary-background);
   --color-secondary-background: var(--secondary-background);
   --color-secondary: var(--secondary-text-color);
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
+  --color-success: #22bb33;
+  --color-success-bg: #dcfce7;
+  --color-warning: #9f6000;
+  --color-warning-bg: #fff4de;
   --color-error: #ef4444;
-  --color-info: #06b6d4;
+  --color-error-bg: #ffe2e6;
+  --color-info: #31708f;
+  --color-info-bg: #d5dcfc;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-fade: fade 1s ease-in-out infinite;

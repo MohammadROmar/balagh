@@ -31,15 +31,40 @@
       "registered": "تم تسجيل الموظف بنجاح"
     }
   },
+  "complaintsPage": {
+    "title": "جميع الشكاوي",
+    "subtitle": "اتطلع، أدر، وتتبع جميع شكاوى المواطنين.",
+    "details": {
+      "title": "تفاصيل الشكوى",
+      "info": "معلومات الشكوى",
+      "files": "ملفات الشكوى",
+      "governmentalEntity": "المحافظة",
+      "complaintID": "معرف الشكوى",
+      "citizen": "المواطن",
+      "location": "الموقع",
+      "status": "الحالة الحالية",
+      "description": "الشرح",
+      "unknown": "غير معروف",
+      "viewDetails": "رؤية التفاصيل",
+      "date": "تاريخ التقديم",
+      "imagesOverlay": {
+        "imageNumber": "الصورة {curr} من {max}",
+        "close": "اغلاق",
+        "next": "التالي",
+        "prev": "السابق"
+      }
+    }
+  },
   "sidebar": {
     "title": "بلاغ",
     "logout": "تسجيل الخروج",
     "cancel": "إلغاء",
     "admin": {
       "overview": "نظرة عامة",
-      "registerEmployee": "تسجيل موظف"
+      "registerEmployee": "تسجيل موظف",
+      "complaints": "الشكاوى"
     },
-    "employee": { "overview": "نظرة عامة", "complaintes": "الشكاوى" },
+    "employee": { "overview": "نظرة عامة", "complaints": "الشكاوى" },
     "logoutDescription": "هل أنت متأكد من رغبتك في تسجيل الخروج؟"
   },
   "forms": {
@@ -71,5 +96,11 @@
     "server-error": "حدث خطأ أثناء الاتصال بالخادم. حاول مجدداً في وقت لاحق",
     "invalid-role": "حدث خطأ أثناء التنفيذن غير مصرح لك بالقيام بهذه العملية",
     "failure": "حدث خطأ أثناء محاولة تنفيذ العملية. الرجاء التأكد من اتصال الانترنت والمحاولة لاحقاً"
+  },
+  "navigation": {
+    "admin": "المسؤول",
+    "complaints": "الشكاوى",
+    "dashboard": "لوحة التحكم",
+    "register-employee": "تسجيل موظف"
   }
 }

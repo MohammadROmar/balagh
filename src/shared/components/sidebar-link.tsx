@@ -5,17 +5,23 @@ import type { ReactNode } from 'react';
 
 import { Link, usePathname } from '@/i18n/navigation';
 
-type SidebarLinkProps = { label: string; href: string; icon: ReactNode };
+type SidebarLinkProps = {
+  label: string;
+  href: string;
+  icon: ReactNode;
+  onNvaigate: () => void;
+};
 
-function SidebarLink({ label, href, icon }: SidebarLinkProps) {
+function SidebarLink({ label, href, icon, onNvaigate }: SidebarLinkProps) {
   const pathname = usePathname();
 
   const isActive = pathname === href;
 
   return (
-    <li key={href}>
+    <li>
       <Link
         href={href}
+        onNavigate={onNvaigate}
         className={clsx(
           'button flex items-center gap-2',
           !isActive && 'bg-none font-normal text-current',

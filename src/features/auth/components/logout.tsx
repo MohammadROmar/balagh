@@ -4,9 +4,9 @@ import { useActionState, useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { useDialog } from '@/shared/hooks/use-dialog';
-import LogoutIcon from '@/assets/icons/logout';
 import Modal from '@/shared/components/modal';
 import LoadingIndicator from '@/assets/icons/loading-indicator';
+import LogoutIcon from '@/assets/icons/logout';
 import { logoutAction } from '../api/logout';
 
 export default function Logout() {
@@ -22,13 +22,20 @@ export default function Logout() {
         ref={dialogRef}
         title={t('logout')}
         description={t('logoutDescription')}
-        titleStyles="text-error"
         onClose={() => setIsOpen(false)}
+        icon={
+          <div className="bg-error-bg rounded-full p-3">
+            <LogoutIcon className="text-error size-8" />
+          </div>
+        }
       >
-        <form action={formAction} className="flex items-center gap-2">
+        <form
+          action={formAction}
+          className="flex items-center gap-2 max-md:flex-col"
+        >
           <button
             disabled={pending}
-            className="button bg-error focus:outline-error w-fit"
+            className="button bg-error focus:outline-error"
             style={{ backgroundImage: 'none' }}
           >
             {pending ? <LoadingIndicator className="w-7" /> : t('logout')}
@@ -37,7 +44,7 @@ export default function Logout() {
             type="button"
             onClick={() => setIsOpen(false)}
             disabled={pending}
-            className="button w-fit bg-none font-normal"
+            className="button border border-gray-300 bg-none font-normal text-current dark:border-gray-600"
           >
             {t('cancel')}
           </button>

@@ -38,7 +38,7 @@ export default function RegisterEmployeeForm() {
   return (
     <form
       action={formAction}
-      className="lg:bg-secondary-background mt-8 space-y-6 max-lg:flex max-lg:flex-col max-lg:justify-between lg:h-fit lg:rounded-2xl lg:p-4"
+      className="lg:bg-secondary-background mt-8 space-y-6 border-gray-300 max-lg:flex max-lg:flex-col max-lg:justify-between lg:h-fit lg:rounded-2xl lg:border lg:p-4 dark:border-gray-600"
     >
       <div className="space-y-6">
         <Input

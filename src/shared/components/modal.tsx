@@ -40,30 +40,25 @@ function Modal({
       aria-live="polite"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
-      className="bg-secondary-background animate-fade-in fixed top-1/2 w-fit -translate-1/2 overflow-visible rounded-xl border border-gray-300 backdrop:bg-black/50 max-sm:w-full sm:max-w-lg sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2 dark:border-gray-600"
+      className="bg-secondary-background animate-fade-in fixed top-1/2 w-fit -translate-1/2 overflow-visible rounded-2xl border border-gray-300 p-4 text-center backdrop:bg-black/50 max-sm:w-full sm:max-w-lg sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2 dark:border-gray-600"
       {...props}
     >
-      <div className="relative p-4">
-        <h4
-          id="modal-title"
-          className={clsx('ltr:font-ubuntu text-2xl', titleStyles)}
-        >
-          {title}
-        </h4>
-        {description && (
-          <p
-            id="modal-description"
-            className="my-4 text-sm whitespace-pre-wrap"
-          >
-            {description}
-          </p>
-        )}
-        {children}
-      </div>
+      {icon && (
+        <div className="mb-2 flex items-center justify-center">{icon}</div>
+      )}
 
-      <div className="absolute inset-0 -z-10 overflow-hidden rounded-[inherit]">
-        {icon}
-      </div>
+      <h4 id="modal-title" className={clsx('text-2xl font-bold', titleStyles)}>
+        {title}
+      </h4>
+      {description && (
+        <p
+          id="modal-description"
+          className="text-secondary mt-1 text-sm whitespace-pre-wrap"
+        >
+          {description}
+        </p>
+      )}
+      <div className="mt-4">{children}</div>
     </dialog>,
     document.getElementById('modals')!,
   );

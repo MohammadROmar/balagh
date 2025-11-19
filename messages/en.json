@@ -31,15 +31,40 @@
       "registered": "Employee registered successfully"
     }
   },
+  "complaintsPage": {
+    "title": "All Complaints",
+    "subtitle": "View, manage, and track all citizen complaints.",
+    "details": {
+      "title": "Complaints Details",
+      "status": "Current Status",
+      "info": "Complaints Information",
+      "files": "Complaints Files",
+      "governmentalEntity": "Government",
+      "complaintID": "Complaint ID",
+      "citizen": "Citizen",
+      "location": "Location",
+      "description": "Description",
+      "unknown": "Unknown",
+      "viewDetails": "View Details",
+      "date": "Date Submitted",
+      "imagesOverlay": {
+        "imageNumber": "Image {curr} of {max}",
+        "close": "Close",
+        "next": "Next",
+        "prev": "Previous"
+      }
+    }
+  },
   "sidebar": {
     "title": "Balagh",
     "logout": "Logout",
     "cancel": "Cancel",
     "admin": {
       "overview": "Overview",
-      "registerEmployee": "Register Employee"
+      "registerEmployee": "Register Employee",
+      "complaints": "Complaints"
     },
-    "employee": { "overview": "Overview", "complaintes": "Complaintes" },
+    "employee": { "overview": "Overview", "complaints": "Complaints" },
     "logoutDescription": "Are you sure you want to logout?"
   },
   "forms": {
@@ -71,5 +96,11 @@
     "server-error": "Could not connect to the server. Please try again later",
     "invalid-role": "An error occurred while trying to complete the operation. You are unauthorized",
     "failure": "An error occurred while trying to complete the operation. Please check your internet connection and try again later"
+  },
+  "navigation": {
+    "admin": "Admin",
+    "complaints": "Complaints",
+    "dashboard": "Dashboard",
+    "register-employee": "Register Employee"
   }
 }
