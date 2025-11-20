@@ -11,7 +11,7 @@ type AuthLayoutProps = {
 
 function AuthLayout({ role, children }: AuthLayoutProps) {
   return (
-    <div className="h-screen max-h-screen grid-cols-[auto_auto_auto_1fr] lg:grid">
+    <div className="min-h-screen grid-cols-[auto_auto_auto_1fr] lg:grid">
       <Toaster />
       <div id="modals" />
       <Sidebar role={role} />

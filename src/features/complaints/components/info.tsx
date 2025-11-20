@@ -8,6 +8,7 @@ import LocationIcon from '@/assets/icons/location';
 import DescriptionIcon from '@/assets/icons/description';
 import GovernmentIcon from '@/assets/icons/government';
 import DateIcon from '@/assets/icons/date';
+import ComplaintDetailsContainer from './details-container';
 import { formatDate } from '@/shared/utils/format-date';
 import type { Complaint } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';
@@ -19,56 +20,52 @@ async function ComplaintInfo({ complaint, t }: Props) {
   const locale = await getLocale();
 
   return (
-    <section className="bg-secondary-background space-y-4 rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
-      <div className="flex items-center gap-2">
-        <InfoIcon className="text-emerald-green size-5" />
-        <h3 className="text-heading text-xl font-semibold">{t('info')}</h3>
-      </div>
+    <ComplaintDetailsContainer title={t('info')} icon={InfoIcon}>
+      <div className="space-y-4">
+        <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+          <Detail
+            title={t('citizen')}
+            value={complaint.userName}
+            icon={UserIcon}
+          />
+          <Detail
+            title={t('date')}
+            value={formatDate(new Date(complaint.createdAt), locale)}
+            icon={DateIcon}
+          />
+        </div>
 
-      <hr className="text-gray-300 dark:text-gray-600" />
-      <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+        <hr className="text-gray-300 dark:text-gray-600" />
+        <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+          <Detail
+            title={t('governmentalEntity')}
+            value={complaint.governmentalEntityId.toString()}
+            icon={GovernmentIcon}
+          />
+          <Detail
+            title={t('status')}
+            value={complaint.status}
+            icon={StatusIcon}
+          />
+        </div>
+
+        <hr className="text-gray-300 dark:text-gray-600" />
+        <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+          <Detail
+            title={t('location')}
+            value={complaint.location}
+            icon={LocationIcon}
+          />
+        </div>
+
+        <hr className="text-gray-300 dark:text-gray-600" />
         <Detail
-          title={t('citizen')}
-          value={complaint.userName}
-          icon={UserIcon}
-        />
-        <Detail
-          title={t('date')}
-          value={formatDate(new Date(complaint.createdAt), locale)}
-          icon={DateIcon}
+          title={t('description')}
+          value={complaint.description}
+          icon={DescriptionIcon}
         />
       </div>
-
-      <hr className="text-gray-300 dark:text-gray-600" />
-      <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
-        <Detail
-          title={t('governmentalEntity')}
-          value={complaint.governmentalEntityId.toString()}
-          icon={GovernmentIcon}
-        />
-        <Detail
-          title={t('status')}
-          value={complaint.status}
-          icon={StatusIcon}
-        />
-      </div>
-
-      <hr className="text-gray-300 dark:text-gray-600" />
-      <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
-        <Detail
-          title={t('location')}
-          value={complaint.location}
-          icon={LocationIcon}
-        />
-      </div>
-
-      <hr className="text-gray-300 dark:text-gray-600" />
-      <Detail
-        title={t('description')}
-        value={complaint.description}
-        icon={DescriptionIcon}
-      />
-    </section>
+    </ComplaintDetailsContainer>
   );
 }
 

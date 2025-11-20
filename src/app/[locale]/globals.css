@@ -85,3 +85,7 @@
 @utility button {
   @apply bg-gradient focus:ring-emerald-green focus:outline-emerald-green w-full cursor-pointer rounded-2xl px-4 py-2 font-medium text-white transition-transform duration-500 select-none hover:scale-95 focus:outline-2 focus:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-75;
 }
+
+@utility input {
+  @apply focus:ring-emerald-green w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800;
+}

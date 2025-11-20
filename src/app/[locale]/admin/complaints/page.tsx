@@ -1,10 +1,11 @@
-import { cookies } from 'next/headers';
+import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import ComplaintCard from '@/features/complaints/components/card';
 import PageTitle from '@/shared/components/page-title';
-import type { Complaint } from '@/features/complaints/models/complaint';
 import Pagination from '@/shared/components/pagination';
+import { get } from '@/shared/api/get';
+import type { Complaint } from '@/features/complaints/models/complaint';
 
 type Complaints = {
   items: Complaint[];
@@ -19,21 +20,17 @@ type Props = { searchParams: Promise<{ page?: string }> };
 export default async function ComplaintsPage({ searchParams }: Props) {
   const { page } = await searchParams;
 
-  const accessToken = (await cookies()).get('access_token')?.value;
-
-  const response = await fetch(
-    `${process.env.BACKEND_BASE_URL}/api/Complaints/GetAllComplaints?pageNum=${page ? page : 1}&pageSize=6`,
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${accessToken}`,
-      },
-    },
+  const data = await get<Complaints>(
+    `/api/Complaints/GetAllComplaints?pageNum=${page ? page : 1}&pageSize=6`,
   );
+
+  if (data.message !== 'success') {
+    return notFound();
+  }
 
   const t = await getTranslations('complaintsPage');
 
-  const complaints = (await response.json()) as Complaints;
+  const complaints = data.data;
 
   return (
     <section>

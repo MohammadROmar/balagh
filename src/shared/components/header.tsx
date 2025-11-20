@@ -11,7 +11,7 @@ async function Header() {
 
   return (
     <header className="flex w-full items-center justify-between border-b border-gray-300 px-4 dark:border-gray-600">
-      <div className="flex h-min items-center gap-2 p-4 lg:opacity-0">
+      <div className="flex h-min items-center gap-2 p-4 lg:opacity-0 lg:select-none">
         <div className="relative size-7">
           <Image
             src={logoImg}

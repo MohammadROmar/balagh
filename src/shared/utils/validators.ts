@@ -9,7 +9,7 @@ export function isValidPassword(password: string) {
 }
 
 export function isValidText(input: string) {
-  return input.trim().length !== 0;
+  return input && input.trim().length !== 0;
 }
 
 export function isValidPhoneNumber(input: string) {

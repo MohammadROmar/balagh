@@ -37,7 +37,8 @@
     "details": {
       "title": "تفاصيل الشكوى",
       "info": "معلومات الشكوى",
-      "files": "ملفات الشكوى",
+      "images": "صور الشكوى",
+      "documents": "وثائق الشكوى",
       "governmentalEntity": "المحافظة",
       "complaintID": "معرف الشكوى",
       "citizen": "المواطن",
@@ -47,6 +48,11 @@
       "unknown": "غير معروف",
       "viewDetails": "رؤية التفاصيل",
       "date": "تاريخ التقديم",
+      "internalNotes": "الملاحظات",
+      "addInternalNotes": "أضف ملاحظة...",
+      "add": "إضافة",
+      "showAllNotes": "عرض جميع الملاحظات",
+      "view": "الاطلاع",
       "imagesOverlay": {
         "imageNumber": "الصورة {curr} من {max}",
         "close": "اغلاق",

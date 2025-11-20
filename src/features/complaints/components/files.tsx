@@ -1,18 +1,38 @@
 'use client';
 
 import Image from 'next/image';
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
-import AttachmentICon from '@/assets/icons/attachment';
-import type { Complaint } from '../models/complaint';
 import ComplaintFullImageOverlay from './full-image-overlay';
-import { Activity, useState } from 'react';
+import ImageIcon from '@/assets/icons/image';
+import PdfIcon from '@/assets/icons/pdf';
+import FileIcon from '@/assets/icons/file';
+import ComplaintDetailsContainer from './details-container';
+import { seperateComplaintFiles } from '../utils/seperate-files';
+import type { Complaint } from '../models/complaint';
+import type { TFunction } from '@/shared/models/tfunction';
 
-type ComplaintFilesProps = {
-  title: string;
-  complaintFiles: Complaint['complaintFiles'];
-};
+type ComplaintFilesProps = { complaintFiles: Complaint['complaintFiles'] };
 
-function ComplaintFiles({ title, complaintFiles }: ComplaintFilesProps) {
+type ComplaintSubFilesProps = {
+  t: TFunction<'complaintsPage.details'>;
+} & ComplaintFilesProps;
+
+function ComplaintFiles({ complaintFiles }: ComplaintFilesProps) {
+  const t = useTranslations('complaintsPage.details');
+
+  const files = seperateComplaintFiles(complaintFiles);
+
+  return (
+    <>
+      <ComplaintImages t={t} complaintFiles={files.images} />
+      <ComplaintDocuments t={t} complaintFiles={files.documents} />
+    </>
+  );
+}
+
+function ComplaintImages({ t, complaintFiles }: ComplaintSubFilesProps) {
   const [opendImage, setOpendImage] = useState(-1);
 
   return (
@@ -25,18 +45,11 @@ function ComplaintFiles({ title, complaintFiles }: ComplaintFilesProps) {
         />
       )}
 
-      <section className="bg-secondary-background rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
-        <div className="flex items-center gap-2">
-          <AttachmentICon className="text-emerald-green size-5" />
-          <h3 className="text-heading text-xl font-semibold">{title}</h3>
-        </div>
-
-        <hr className="my-4 text-gray-300 dark:text-gray-600" />
-
+      <ComplaintDetailsContainer title={t('images')} icon={ImageIcon}>
         <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {complaintFiles.map((file, i) => (
             <li
-              key={`complaint-file-${file.id}`}
+              key={`complaint-image-${file.id}`}
               className="relative aspect-square overflow-hidden rounded-2xl"
             >
               <button
@@ -54,8 +67,41 @@ function ComplaintFiles({ title, complaintFiles }: ComplaintFilesProps) {
             </li>
           ))}
         </ul>
-      </section>
+      </ComplaintDetailsContainer>
     </>
+  );
+}
+
+function ComplaintDocuments({ t, complaintFiles }: ComplaintSubFilesProps) {
+  return (
+    <ComplaintDetailsContainer title={t('documents')} icon={FileIcon}>
+      <ul className="flex flex-col gap-4 md:grid-cols-3">
+        {complaintFiles.map((file) => {
+          const x = complaintFiles[0].path.split('/');
+          const complaintFileName = x[x.length - 1];
+
+          return (
+            <li
+              key={`complaint-document-${file.id}`}
+              className="bg-primary-background flex items-center justify-between rounded-2xl p-2"
+            >
+              <div className="flex items-center gap-2">
+                <PdfIcon className="text-error size-5" />
+                <p className="max-w-[20ch] truncate">{complaintFileName}</p>
+              </div>
+              <a
+                href={file.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal w-fit"
+              >
+                {t('view')}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </ComplaintDetailsContainer>
   );
 }
 

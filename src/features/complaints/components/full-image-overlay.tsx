@@ -51,7 +51,7 @@ function ComplaintFullImageOverlay({ images, opendImage, close }: Props) {
       </button>
 
       <div className="fixed top-1/2 left-1/2 z-60 -translate-x-1/2 -translate-y-1/2 rounded-2xl select-none">
-        <div className="relative h-[90vh] max-h-[90vh] w-[75vw] max-w-[600px]">
+        <div className="relative h-[90vh] max-h-[90vh] w-[75vw] max-w-[75vw]">
           <Image
             src={images[currentIndex].path}
             alt={`Complaint image #${currentIndex}`}

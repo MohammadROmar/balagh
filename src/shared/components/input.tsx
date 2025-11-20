@@ -13,10 +13,7 @@ function Input({ label, id, error, ...props }: InputProps) {
         name={id}
         required
         {...props}
-        className={clsx(
-          'focus:ring-emerald-green w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800',
-          props.className,
-        )}
+        className={clsx('input', props.className)}
       />
 
       {error && <p className="text-error text-sm">{error}</p>}

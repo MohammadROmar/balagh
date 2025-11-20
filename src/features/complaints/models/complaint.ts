@@ -7,10 +7,8 @@ export type Complaint = {
   location: string;
   description: string;
   governmentalEntityId: number;
-  complaintFiles: [
-    {
-      id: number;
-      path: string;
-    },
-  ];
+  complaintFiles: {
+    id: number;
+    path: string;
+  }[];
 };

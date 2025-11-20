@@ -31,6 +31,8 @@ export default function RefreshTokens() {
       }
     }
 
+    refresh();
+
     const refreshInterval = setInterval(refresh, 25 * 60 * 1000);
 
     return () => {

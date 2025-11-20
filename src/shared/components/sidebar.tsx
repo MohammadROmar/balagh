@@ -35,7 +35,7 @@ function Sidebar({ role }: SidebarProps) {
         id="sidebar"
         aria-live="polite"
         className={clsx(
-          'bg-secondary-background max-w-[90vw]border-r fixed inset-y-0 z-50 w-80 border-gray-300 transition-transform duration-500 lg:static ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
+          'bg-secondary-background fixed inset-y-0 z-50 max-h-screen w-80 max-w-[90vw] border-r border-gray-300 transition-transform duration-500 lg:sticky lg:top-0 ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
           isOpen && 'translate-x-0!',
         )}
       >
