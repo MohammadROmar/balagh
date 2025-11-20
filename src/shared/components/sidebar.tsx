@@ -7,11 +7,11 @@ import clsx from 'clsx';
 import { useSidebarContext } from '../store/sidebar';
 import SidebarLink from './sidebar-link';
 import Logout from '@/features/auth/components/logout';
+import ThemeToggle from './theme-toggle';
+import LocaleToggle from './locale-toggle';
 import { CloseMenu } from './hamburger-menu-btn';
 import { getSidebarTabs } from '../utils/get-sidebar-tabs';
 import logoImg from '@/assets/images/logo.png';
-import ThemeToggle from './theme-toggle';
-import LocaleToggle from './locale-toggle';
 
 type SidebarProps = { role: 'Administrator' | 'Employee' };
 

@@ -23,6 +23,7 @@ export async function POST() {
         body: JSON.stringify({ refreshToken }),
       },
     );
+
     if (!response.ok) {
       return NextResponse.json({ error: 'refresh-failed' }, { status: 401 });
     }
@@ -38,7 +39,7 @@ export async function POST() {
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 24 * 2,
     });
     res.cookies.set({
       name: 'access_token',
@@ -47,7 +48,7 @@ export async function POST() {
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 30 * 60,
     });
 
     return res;

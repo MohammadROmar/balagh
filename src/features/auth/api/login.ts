@@ -78,16 +78,7 @@ export async function loginAction(
       secure: true,
       sameSite: 'strict',
       path: '/',
-      maxAge: 60 * 60 * 24 * 7,
-    });
-    cookieStore.set({
-      name: 'role',
-      value: role,
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      path: '/',
-      maxAge: 60 * 60 * 24 * 7,
+      maxAge: 60 * 60 * 24 * 2,
     });
 
     redirectPath = role === 'Administrator' ? '/admin' : '/dashboard';

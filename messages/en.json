@@ -91,11 +91,36 @@
       "password": "Enter a secure password"
     }
   },
+  "notFoundPage": {
+    "title": "Oops! Page Not Found",
+    "subtitle": "The page you are looking for doesn't exist or has been removed. Please check the URL or return Home.",
+    "goHome": "Go to Home"
+  },
+  "redirectPage": {
+    "balagh": "Balagh",
+    "title": "Session Expired",
+    "subtitle": "Your session has expired. For security reasons, we are cleaning your session and redirecting you to the homepage."
+  },
   "errors": {
     "unknown": "Unknow error has occured. Please check your internet connection and try again later",
     "server-error": "Could not connect to the server. Please try again later",
     "invalid-role": "An error occurred while trying to complete the operation. You are unauthorized",
-    "failure": "An error occurred while trying to complete the operation. Please check your internet connection and try again later"
+    "failure": "An error occurred while trying to complete the operation. Please check your internet connection and try again later",
+    "page": {
+      "title": "Something went wrong",
+      "subtitle": "Oops! An un expected error occurred. You can got to home or try again.",
+      "actions": {
+        "goHome": "Go to Home",
+        "refresh": "Refresh Page"
+      }
+    }
+  },
+  "session": {
+    "end": {
+      "title": "Session Expired",
+      "subtitle": "Your session has expired for security reasons.\nPleaase log in again to continue managing complaints.",
+      "action": "Log in Again"
+    }
   },
   "navigation": {
     "admin": "Admin",

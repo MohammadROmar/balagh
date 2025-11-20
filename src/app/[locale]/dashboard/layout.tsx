@@ -8,21 +8,21 @@ import { getSession } from '@/features/auth/api/get-session';
 
 export const dynamic = 'force-dynamic';
 
-async function AdminLayout({ children }: PropsWithChildren) {
+async function EmployeeLayout({ children }: PropsWithChildren) {
   const locale = await getLocale();
 
   const user = await getSession();
 
-  if (user && user.role !== 'Administrator') {
-    redirect({ href: '/dashboard', locale });
+  if (user && user.role !== 'Employee') {
+    redirect({ href: '/admin', locale });
   }
 
   return (
     <>
       <SessionCleanup hasUser={!!user} />
-      {user && <AuthLayout role="Administrator">{children}</AuthLayout>}
+      {user && <AuthLayout role="Employee">{children}</AuthLayout>}
     </>
   );
 }
 
-export default AdminLayout;
+export default EmployeeLayout;
