@@ -7,7 +7,7 @@ type Props = {
 
 function ComplaintDetailsContainer({ title, icon: Icon, children }: Props) {
   return (
-    <section className="bg-secondary-background rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
+    <section className="bg-secondary-background h-fit rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
       <div className="flex items-center gap-2">
         <Icon className="text-emerald-green size-5" />
         <h3 className="text-heading text-xl font-semibold">{title}</h3>

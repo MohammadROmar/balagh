@@ -3,27 +3,27 @@
 import { cookies } from 'next/headers';
 import { updateTag } from 'next/cache';
 
-import { ActionMessage } from '@/core/models/action-message';
 import { isValidText } from '@/shared/utils/validators';
+import type { ActionMessage } from '@/core/models/action-message';
 
-type AddComplaintNoteActionState = {
+type RequestAdditionalInfoActionState = {
   id: string;
-  message: ActionMessage | undefined;
-  note: string;
+  message: ActionMessage;
+  data: string;
 };
 
-export async function addComplaintNote(
+export async function requestAdditionalInfo(
   id: string,
-  _: AddComplaintNoteActionState,
+  _: RequestAdditionalInfoActionState,
   formData: FormData,
-): Promise<AddComplaintNoteActionState> {
-  const note = formData.get('note') as string;
+): Promise<RequestAdditionalInfoActionState> {
+  const requestMessage = formData.get('requestMessage') as string;
 
-  if (!isValidText(note)) {
+  if (!isValidText(requestMessage)) {
     return {
       id: Date.now().toString(),
       message: 'invalid-input',
-      note,
+      data: requestMessage,
     };
   }
 
@@ -31,14 +31,14 @@ export async function addComplaintNote(
     const token = (await cookies()).get('access_token')?.value;
 
     const response = await fetch(
-      `${process.env.BACKEND_BASE_URL}/api/Complaints/${id}/notes/add`,
+      `${process.env.BACKEND_BASE_URL}/api/Complaints/RequestExtraInfromation/${id}`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ noteBody: note }),
+        body: JSON.stringify({ message: requestMessage }),
       },
     );
 
@@ -46,15 +46,24 @@ export async function addComplaintNote(
       return {
         id: Date.now().toString(),
         message: response.status === 401 ? 'invalid-role' : 'failure',
-        note,
+        data: requestMessage,
       };
     }
 
     updateTag(`complaint-${id}`);
   } catch (e) {
     console.error(e);
-    return { id: Date.now().toString(), message: 'server-error', note };
+
+    return {
+      id: Date.now().toString(),
+      message: 'server-error',
+      data: requestMessage,
+    };
   }
 
-  return { message: 'success', note: '', id: Date.now().toString() };
+  return {
+    id: Date.now().toString(),
+    message: 'success',
+    data: requestMessage,
+  };
 }

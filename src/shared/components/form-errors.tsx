@@ -1,11 +1,13 @@
 import { useTranslations } from 'next-intl';
-import type { ActionMessage } from '@/config/models/action-message';
+import type { ActionMessage } from '@/core/models/action-message';
+import clsx from 'clsx';
 
 type FormErrorsProps = {
   message: ActionMessage;
+  className?: string;
 };
 
-function FormErrors({ message }: FormErrorsProps) {
+function FormErrors({ message, className }: FormErrorsProps) {
   const t = useTranslations('errors');
 
   if (
@@ -17,7 +19,9 @@ function FormErrors({ message }: FormErrorsProps) {
   }
 
   return (
-    <p className="text-error mt-2 text-sm whitespace-pre-wrap">
+    <p
+      className={clsx('text-error mt-2 text-sm whitespace-pre-wrap', className)}
+    >
       {t.has(message) ? t(message) : t('unknown')}
     </p>
   );

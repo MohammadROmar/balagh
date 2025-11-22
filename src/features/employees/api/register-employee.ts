@@ -8,7 +8,7 @@ import {
   isValidPhoneNumber,
   isValidText,
 } from '@/shared/utils/validators';
-import type { ActionMessage } from '@/config/models/action-message';
+import type { ActionMessage } from '@/core/models/action-message';
 
 type EmployeeCredentials = {
   username: string;
@@ -62,10 +62,14 @@ export async function registerEmployeeAction(
     );
 
     if (!response.ok) {
-      return { message: 'failure', errors, defaultValues: credentials };
+      return {
+        message: response.status === 401 ? 'invalid-role' : 'failure',
+        errors,
+        defaultValues: credentials,
+      };
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
     return { message: 'server-error', errors, defaultValues: credentials };
   }
 

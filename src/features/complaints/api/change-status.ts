@@ -1,0 +1,74 @@
+'use server';
+
+import { cookies } from 'next/headers';
+import { updateTag } from 'next/cache';
+
+import { isValidText } from '@/shared/utils/validators';
+import type { ActionMessage } from '@/core/models/action-message';
+
+type ComplaintStatus = {
+  id: string;
+  message: ActionMessage;
+  status: string;
+};
+
+export async function changeComplaintStatus(
+  id: string,
+  _: ComplaintStatus,
+  formData: FormData,
+): Promise<ComplaintStatus> {
+  const status = formData.get('status') as string;
+
+  if (!isValidText(status)) {
+    return { id: Date.now().toString(), message: 'invalid-input', status };
+  }
+
+  try {
+    const token = (await cookies()).get('access_token')?.value;
+
+    const fd = new FormData();
+
+    fd.append('complaintId', 'null');
+    fd.append('newStatus', 'null');
+    fd.append('governmentalEntityId', 'null');
+    fd.append('location', 'null');
+    fd.append('description', 'null');
+    fd.append('complaintFiles', 'null');
+
+    const response = await fetch(
+      `${process.env.BACKEND_BASE_URL}/api/Complaints/UpdateComplaint/${id}`,
+      {
+        method: 'POST',
+
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          complaintId: id,
+          newStatus: status,
+          governmentalEntityId: null,
+          location: null,
+          description: null,
+          complaintFiles: null,
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      return {
+        id: Date.now().toString(),
+        message: response.status === 401 ? 'invalid-role' : 'failure',
+        status,
+      };
+    }
+
+    updateTag(`complaint-${id}`);
+    updateTag(`complaints`);
+  } catch (e) {
+    console.error(e);
+    return { id: Date.now().toString(), message: 'server-error', status };
+  }
+
+  return { id: Date.now().toString(), message: 'success', status };
+}

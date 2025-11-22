@@ -53,7 +53,7 @@ export async function POST() {
 
     return res;
   } catch (e) {
-    console.log(e);
+    console.error(e);
 
     return NextResponse.json({ error: 'refresh-failed' }, { status: 401 });
   }

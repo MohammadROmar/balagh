@@ -87,5 +87,5 @@
 }
 
 @utility input {
-  @apply focus:ring-emerald-green w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus:ring-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800;
+  @apply focus:ring-emerald-green w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-2 focus:ring-2 focus:outline-0 dark:border-gray-700 dark:bg-gray-800;
 }

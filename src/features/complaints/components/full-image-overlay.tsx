@@ -6,10 +6,10 @@ import { useTranslations } from 'next-intl';
 
 import ArrowLeftIcon from '@/assets/icons/arrow-left';
 import XIcon from '@/assets/icons/x';
-import type { Complaint } from '../models/complaint';
+import type { ComplaintFile } from '../models/complaint';
 
 type Props = {
-  images: Complaint['complaintFiles'];
+  images: ComplaintFile[];
   opendImage: number;
   close: () => void;
 };

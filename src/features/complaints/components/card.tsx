@@ -8,6 +8,7 @@ import LocationIcon from '@/assets/icons/location';
 import DescriptionIcon from '@/assets/icons/description';
 import type { Complaint } from '../models/complaint';
 import ComplaintStatus from './status';
+import LockIcon from '@/assets/icons/lock';
 
 type ComplaintCardProps = { complaint: Complaint };
 type CardTextProps = { title: string; value: string; icon: ElementType };
@@ -31,7 +32,7 @@ async function ComplaintCard({ complaint }: ComplaintCardProps) {
         </div>
         <p>
           <CardText
-            title={t('citizen')}
+            title={t('user')}
             value={complaint.userName}
             icon={UserIcon}
           />
@@ -48,6 +49,17 @@ async function ComplaintCard({ complaint }: ComplaintCardProps) {
             title={t('description')}
             value={complaint.description}
             icon={DescriptionIcon}
+          />
+        </p>
+        <p className="max-w-full overflow-hidden">
+          <CardText
+            title={t('lockStatus')}
+            value={
+              complaint.isLocked
+                ? `${t('lockedBy')} ${complaint.lockedByUserName}`
+                : t('unlocked')
+            }
+            icon={LockIcon}
           />
         </p>
       </div>

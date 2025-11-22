@@ -22,6 +22,7 @@ export default async function ComplaintsPage({ searchParams }: Props) {
 
   const data = await get<Complaints>(
     `/api/Complaints/GetAllComplaints?pageNum=${page ? page : 1}&pageSize=6`,
+    { next: { tags: ['all-complaints'] } },
   );
 
   if (data.message !== 'success') {

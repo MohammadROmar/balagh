@@ -22,7 +22,7 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
         method: 'DELETE',
       })
         .then(() => router.replace('/'))
-        .catch((e) => console.log(e));
+        .catch((e) => console.error(e));
     }
   }, [hasUser]);
 

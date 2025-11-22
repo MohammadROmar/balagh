@@ -25,7 +25,7 @@ export default function RefreshTokens() {
 
         if (!res.ok) setHasError(true);
       } catch (e) {
-        console.log(e);
+        console.error(e);
 
         setHasError(true);
       }

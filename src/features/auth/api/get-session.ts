@@ -3,7 +3,7 @@
 import { cookies } from 'next/headers';
 
 import { get } from '../../../shared/api/get';
-import type { User } from '@/config/models/user';
+import type { User } from '@/core/models/user';
 
 export async function getSession() {
   const cookieStore = await cookies();
@@ -38,7 +38,7 @@ export async function getSession() {
       return null;
     }
   } catch (e) {
-    console.log(e);
+    console.error(e);
 
     return null;
   }

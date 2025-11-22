@@ -15,7 +15,7 @@ async function NotFoundPage() {
       <h2 className="text-heading text-3xl font-bold">{t('title')}</h2>
       <p className="text-secondary text-sm">{t('subtitle')}</p>
 
-      <Link href="/" className="button w-fit">
+      <Link href="/" className="button w-fit text-nowrap">
         {t('goHome')}
       </Link>
     </section>

@@ -26,7 +26,7 @@ export default function RegisterEmployeeForm() {
         classNames: {
           title: 'text-heading!',
           toast:
-            'bg-secondary-background! border-gray-300! dark:border-gray-600!',
+            'bg-secondary-background! rounded-2xl! border-gray-300! dark:border-gray-600!',
           icon: 'text-success',
         },
       });

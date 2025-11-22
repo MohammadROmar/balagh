@@ -9,6 +9,7 @@ import DescriptionIcon from '@/assets/icons/description';
 import GovernmentIcon from '@/assets/icons/government';
 import DateIcon from '@/assets/icons/date';
 import ComplaintDetailsContainer from './details-container';
+import LockIcon from '@/assets/icons/lock';
 import { formatDate } from '@/shared/utils/format-date';
 import type { Complaint } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';
@@ -24,7 +25,7 @@ async function ComplaintInfo({ complaint, t }: Props) {
       <div className="space-y-4">
         <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
           <Detail
-            title={t('citizen')}
+            title={t('user')}
             value={complaint.userName}
             icon={UserIcon}
           />
@@ -38,19 +39,28 @@ async function ComplaintInfo({ complaint, t }: Props) {
         <hr className="text-gray-300 dark:text-gray-600" />
         <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
           <Detail
-            title={t('governmentalEntity')}
-            value={complaint.governmentalEntityId.toString()}
-            icon={GovernmentIcon}
+            title={t('status')}
+            value={t(`statuses.${complaint.status}` as any)}
+            icon={StatusIcon}
           />
           <Detail
-            title={t('status')}
-            value={complaint.status}
-            icon={StatusIcon}
+            title={t('lockStatus')}
+            value={
+              complaint.isLocked
+                ? `${t('lockedBy')} ${complaint.lockedByUserName}`
+                : t('unlocked')
+            }
+            icon={LockIcon}
           />
         </div>
 
         <hr className="text-gray-300 dark:text-gray-600" />
         <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+          <Detail
+            title={t('governmentalEntity')}
+            value={complaint.governmentalEntityId.toString()}
+            icon={GovernmentIcon}
+          />
           <Detail
             title={t('location')}
             value={complaint.location}
@@ -59,6 +69,7 @@ async function ComplaintInfo({ complaint, t }: Props) {
         </div>
 
         <hr className="text-gray-300 dark:text-gray-600" />
+
         <Detail
           title={t('description')}
           value={complaint.description}

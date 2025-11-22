@@ -18,7 +18,7 @@ export default function ErrorPage() {
       <p className="text-secondary text-sm">{t('subtitle')}</p>
 
       <div className="flex items-center gap-4">
-        <Link href="/" className="button">
+        <Link href="/" className="button text-nowrap">
           {t('actions.goHome')}
         </Link>
         <button

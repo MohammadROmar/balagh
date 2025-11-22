@@ -1,9 +1,10 @@
-import type { Complaint } from '../models/complaint';
+import type { ComplaintFile } from '../models/complaint';
 
-type Files = Complaint['complaintFiles'];
-
-export function seperateComplaintFiles(files: Files) {
-  const seperatedFiles: { images: Files; documents: Files } = {
+export function seperateComplaintFiles(files: ComplaintFile[]) {
+  const seperatedFiles: {
+    images: ComplaintFile[];
+    documents: ComplaintFile[];
+  } = {
     images: [],
     documents: [],
   };

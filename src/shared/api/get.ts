@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 
-import type { Fetch } from '@/config/models/fetch';
+import type { Fetch } from '@/core/models/fetch';
 
 export async function get<T>(
   path: string,

@@ -5,7 +5,7 @@ import { getLocale } from 'next-intl/server';
 
 import { redirect } from '@/i18n/navigation';
 import { isValidEmail, isValidPassword } from '@/shared/utils/validators';
-import type { ActionMessage } from '@/config/models/action-message';
+import type { ActionMessage } from '@/core/models/action-message';
 
 type LoginCredentials = { email?: string; password?: string };
 type LoginErrors = Partial<Record<keyof LoginCredentials, boolean>>;
@@ -51,7 +51,12 @@ export async function loginAction(
     );
 
     if (!response.ok) {
-      return { message: 'failure', errors, email, password };
+      return {
+        message: response.status === 401 ? 'invalid-role' : 'failure',
+        errors,
+        email,
+        password,
+      };
     }
 
     const { role, token, refreshToken, expires } =
@@ -83,7 +88,7 @@ export async function loginAction(
 
     redirectPath = role === 'Administrator' ? '/admin' : '/dashboard';
   } catch (e) {
-    console.log(e);
+    console.error(e);
 
     return { message: 'server-error', errors, email, password };
   }

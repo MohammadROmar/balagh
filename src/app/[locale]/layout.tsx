@@ -6,7 +6,7 @@ import type { PropsWithChildren } from 'react';
 
 import Providers from '@/shared/store/providers';
 import { routing } from '@/i18n/routing';
-import { fontVariables } from '@/config/core/fonts';
+import { fontVariables } from '@/core/config/fonts';
 import './globals.css';
 
 type LocaleLayoutProps = {

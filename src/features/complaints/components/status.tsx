@@ -29,7 +29,7 @@ function ComplaintStatus({ status, t }: ComplaintStatusProps) {
         statusStyles.bg,
       )}
     >
-      {status}
+      {t(`statuses.${status}` as any)}
     </p>
   );
 }
