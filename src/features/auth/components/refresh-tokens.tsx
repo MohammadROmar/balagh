@@ -3,6 +3,7 @@
 import { useState, useEffect, useActionState } from 'react';
 import { useTranslations } from 'next-intl';
 
+import { useRouter } from '@/i18n/navigation';
 import { useDialog } from '@/shared/hooks/use-dialog';
 import Modal from '@/shared/components/modal';
 import ShieldIcon from '@/assets/icons/shield';
@@ -10,6 +11,7 @@ import { logoutAction } from '../api/logout';
 
 export default function RefreshTokens() {
   const [hasError, setHasError] = useState(false);
+  const router = useRouter();
   const dialogRef = useDialog(hasError);
 
   const t = useTranslations('session.end');
@@ -40,11 +42,22 @@ export default function RefreshTokens() {
     };
   }, []);
 
+  async function handleClose() {
+    setHasError(false);
+
+    fetch('/api/users/token/delete', {
+      method: 'DELETE',
+    })
+      .then(() => router.replace('/'))
+      .catch((e) => console.error(e));
+  }
+
   return (
     <Modal
       ref={dialogRef}
       title={t('title')}
       description={t('subtitle')}
+      onClose={handleClose}
       icon={
         <div className="bg-teal/30 rounded-full p-3">
           <ShieldIcon className="text-teal size-8" />

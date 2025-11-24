@@ -9,7 +9,7 @@ type ProceedComplaintActionState = { id: string; message: ActionMessage };
 
 export async function proceedComplaint(
   id: string,
-  _: ProceedComplaintActionState,
+  prevState: ProceedComplaintActionState,
 ): Promise<ProceedComplaintActionState> {
   try {
     const token = (await cookies()).get('access_token')?.value;
@@ -27,7 +27,7 @@ export async function proceedComplaint(
 
     if (!response.ok) {
       return {
-        id: Date.now().toString(),
+        id: prevState.id,
         message: response.status === 401 ? 'invalid-role' : 'failure',
       };
     }
@@ -36,7 +36,7 @@ export async function proceedComplaint(
     updateTag(`complaints`);
   } catch (e) {
     console.error(e);
-    return { id: Date.now().toString(), message: 'server-error' };
+    return { id: prevState.id, message: 'server-error' };
   }
 
   return { id: Date.now().toString(), message: 'success' };

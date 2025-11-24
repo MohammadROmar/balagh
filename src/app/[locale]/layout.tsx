@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata.root');
 
   return {
-    title: t('title'),
+    title: { default: t('title'), template: `%s - ${t('title')}` },
     description: t('description'),
   };
 }

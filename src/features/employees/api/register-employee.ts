@@ -20,13 +20,14 @@ type EmployeeCredentialsErrors = Partial<
   Record<keyof EmployeeCredentials, boolean>
 >;
 type RegisterEmployeeActionState = {
+  id: string;
   message: ActionMessage;
   errors?: EmployeeCredentialsErrors;
   defaultValues?: EmployeeCredentials;
 };
 
 export async function registerEmployeeAction(
-  _: RegisterEmployeeActionState,
+  prevState: RegisterEmployeeActionState,
   formData: FormData,
 ): Promise<RegisterEmployeeActionState> {
   const credentials = Object.fromEntries(
@@ -36,11 +37,16 @@ export async function registerEmployeeAction(
   const errors = validateEmployeeCredentials(credentials);
 
   if (Object.values(errors).includes(true)) {
-    return { message: 'invalid-input', errors, defaultValues: credentials };
+    return {
+      id: prevState.id,
+      message: 'invalid-input',
+      errors,
+      defaultValues: credentials,
+    };
   }
 
   try {
-    const accessToken = (await cookies()).get('access_token');
+    const accessToken = (await cookies()).get('access_token')?.value;
 
     const fd = new FormData();
     fd.append('governmentalEntityId', '1');
@@ -63,6 +69,7 @@ export async function registerEmployeeAction(
 
     if (!response.ok) {
       return {
+        id: prevState.id,
         message: response.status === 401 ? 'invalid-role' : 'failure',
         errors,
         defaultValues: credentials,
@@ -70,10 +77,15 @@ export async function registerEmployeeAction(
     }
   } catch (e) {
     console.error(e);
-    return { message: 'server-error', errors, defaultValues: credentials };
+    return {
+      id: prevState.id,
+      message: 'server-error',
+      errors,
+      defaultValues: credentials,
+    };
   }
 
-  return { message: 'success', errors, defaultValues: credentials };
+  return { id: Date.now().toString(), message: 'success' };
 }
 
 function validateEmployeeCredentials(credentials: EmployeeCredentials) {

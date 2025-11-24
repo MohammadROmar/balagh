@@ -35,7 +35,7 @@ export default function Logout() {
         >
           <button
             disabled={pending}
-            className="button bg-error focus:outline-error"
+            className="button bg-error focus:outline-error flex items-center justify-center"
             style={{ backgroundImage: 'none' }}
           >
             {pending ? <LoadingIndicator className="w-7" /> : t('logout')}

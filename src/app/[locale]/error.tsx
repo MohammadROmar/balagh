@@ -9,7 +9,7 @@ export default function ErrorPage() {
   const t = useTranslations('errors.page');
 
   return (
-    <section className="flex size-full h-screen w-screen flex-col items-center justify-center space-y-4">
+    <section className="flex size-full h-screen w-screen flex-col items-center justify-center space-y-4 text-center text-balance">
       <div className="bg-teal/30 flex items-center justify-center rounded-full p-3">
         <InfoIcon className="text-teal size-8" />
       </div>

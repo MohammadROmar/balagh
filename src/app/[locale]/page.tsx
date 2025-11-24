@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from 'next-intl';
@@ -11,6 +12,12 @@ import { getSession } from '@/features/auth/api/get-session';
 import { redirect } from '@/i18n/navigation';
 
 type HomeProps = { params: Promise<{ locale: Locale }> };
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('metadata');
+
+  return { title: `${t('login')} - ${t('root.title')}` };
+}
 
 async function HomePage({ params }: HomeProps) {
   const { locale } = await params;

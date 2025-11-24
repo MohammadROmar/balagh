@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import type { ElementType } from 'react';
 
-import { Link } from '@/i18n/navigation';
 import ComplaintIcon from '@/assets/icons/complaint';
 import UserIcon from '@/assets/icons/user';
 import LocationIcon from '@/assets/icons/location';
@@ -9,6 +8,7 @@ import DescriptionIcon from '@/assets/icons/description';
 import type { Complaint } from '../models/complaint';
 import ComplaintStatus from './status';
 import LockIcon from '@/assets/icons/lock';
+import AuthLink from '@/features/auth/components/link';
 
 type ComplaintCardProps = { complaint: Complaint };
 type CardTextProps = { title: string; value: string; icon: ElementType };
@@ -66,12 +66,12 @@ async function ComplaintCard({ complaint }: ComplaintCardProps) {
 
       <div className="flex flex-col items-end justify-end">
         <div className="mt-4 h-fit w-full border-t border-gray-300 pt-4 dark:border-gray-600">
-          <Link
-            href={`/admin/complaints/${complaint.id}`}
+          <AuthLink
+            href={`/complaints/${complaint.id}`}
             className="button flex w-full items-center justify-center"
           >
             {t('viewDetails')}
-          </Link>
+          </AuthLink>
         </div>
       </div>
     </li>

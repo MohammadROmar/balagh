@@ -14,14 +14,14 @@ type RequestAdditionalInfoActionState = {
 
 export async function requestAdditionalInfo(
   id: string,
-  _: RequestAdditionalInfoActionState,
+  prevState: RequestAdditionalInfoActionState,
   formData: FormData,
 ): Promise<RequestAdditionalInfoActionState> {
   const requestMessage = formData.get('requestMessage') as string;
 
   if (!isValidText(requestMessage)) {
     return {
-      id: Date.now().toString(),
+      id: prevState.id,
       message: 'invalid-input',
       data: requestMessage,
     };
@@ -44,7 +44,7 @@ export async function requestAdditionalInfo(
 
     if (!response.ok) {
       return {
-        id: Date.now().toString(),
+        id: prevState.id,
         message: response.status === 401 ? 'invalid-role' : 'failure',
         data: requestMessage,
       };
@@ -55,15 +55,11 @@ export async function requestAdditionalInfo(
     console.error(e);
 
     return {
-      id: Date.now().toString(),
+      id: prevState.id,
       message: 'server-error',
       data: requestMessage,
     };
   }
 
-  return {
-    id: Date.now().toString(),
-    message: 'success',
-    data: requestMessage,
-  };
+  return { id: Date.now().toString(), message: 'success', data: '' };
 }

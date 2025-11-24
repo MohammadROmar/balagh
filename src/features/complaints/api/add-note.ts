@@ -14,14 +14,14 @@ type AddComplaintNoteActionState = {
 
 export async function addComplaintNote(
   id: string,
-  _: AddComplaintNoteActionState,
+  prevState: AddComplaintNoteActionState,
   formData: FormData,
 ): Promise<AddComplaintNoteActionState> {
   const note = formData.get('note') as string;
 
   if (!isValidText(note)) {
     return {
-      id: Date.now().toString(),
+      id: prevState.id,
       message: 'invalid-input',
       note,
     };
@@ -44,7 +44,7 @@ export async function addComplaintNote(
 
     if (!response.ok) {
       return {
-        id: Date.now().toString(),
+        id: prevState.id,
         message: response.status === 401 ? 'invalid-role' : 'failure',
         note,
       };
@@ -53,8 +53,8 @@ export async function addComplaintNote(
     updateTag(`complaint-${id}`);
   } catch (e) {
     console.error(e);
-    return { id: Date.now().toString(), message: 'server-error', note };
+    return { id: prevState.id, message: 'server-error', note };
   }
 
-  return { message: 'success', note: '', id: Date.now().toString() };
+  return { id: Date.now().toString(), message: 'success', note: '' };
 }

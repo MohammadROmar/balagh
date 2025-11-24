@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import type { ReactNode } from 'react';
 
 import { Link, usePathname } from '@/i18n/navigation';
+import { isActiveTab } from '../utils/is-active-tab';
 
 type SidebarLinkProps = {
   label: string;
@@ -15,7 +16,7 @@ type SidebarLinkProps = {
 function SidebarLink({ label, href, icon, onNvaigate }: SidebarLinkProps) {
   const pathname = usePathname();
 
-  const isActive = pathname === href;
+  const isActive = isActiveTab(pathname, href);
 
   return (
     <li>

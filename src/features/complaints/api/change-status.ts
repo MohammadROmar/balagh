@@ -14,13 +14,13 @@ type ComplaintStatus = {
 
 export async function changeComplaintStatus(
   id: string,
-  _: ComplaintStatus,
+  prevState: ComplaintStatus,
   formData: FormData,
 ): Promise<ComplaintStatus> {
   const status = formData.get('status') as string;
 
   if (!isValidText(status)) {
-    return { id: Date.now().toString(), message: 'invalid-input', status };
+    return { id: prevState.id, message: 'invalid-input', status };
   }
 
   try {
@@ -57,7 +57,7 @@ export async function changeComplaintStatus(
 
     if (!response.ok) {
       return {
-        id: Date.now().toString(),
+        id: prevState.id,
         message: response.status === 401 ? 'invalid-role' : 'failure',
         status,
       };
@@ -67,7 +67,7 @@ export async function changeComplaintStatus(
     updateTag(`complaints`);
   } catch (e) {
     console.error(e);
-    return { id: Date.now().toString(), message: 'server-error', status };
+    return { id: prevState.id, message: 'server-error', status };
   }
 
   return { id: Date.now().toString(), message: 'success', status };

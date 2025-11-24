@@ -3,6 +3,14 @@
     "root": {
       "title": "Balagh",
       "description": "A digital government platform that allows citizens to easily submit, track, and follow up on complaints. It promotes transparency and enhances communication between the public and authorities through an organized, user-friendly system."
+    },
+    "login": "Login",
+    "register-employee": "Register Employee",
+    "admin": "Administration",
+    "dashboard": "Dashboard",
+    "complaints": {
+      "allComplaintsTitle": "All Complaints",
+      "complaintDetailsTitle": "Complaint Details"
     }
   },
   "accessibility": {

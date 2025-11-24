@@ -1,24 +1,22 @@
 'use client';
 
 import { useActionState, useEffect } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
+import { toast } from 'sonner';
 
 import Input from '@/shared/components/input';
 import FormErrors from '@/shared/components/form-errors';
 import LoadingIndicator from '@/assets/icons/loading-indicator';
 import { registerEmployeeAction } from '../api/register-employee';
-import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
 
 export default function RegisterEmployeeForm() {
   const [state, formAction, pending] = useActionState(registerEmployeeAction, {
+    id: '',
     message: undefined,
   });
 
-  const locale = useLocale();
   const t = useTranslations('forms');
   const tEmployee = useTranslations('adminPages.registerEmployee');
-  const router = useRouter();
 
   useEffect(() => {
     if (state.message === 'success') {
@@ -30,10 +28,8 @@ export default function RegisterEmployeeForm() {
           icon: 'text-success',
         },
       });
-
-      router.push(`/${locale}/admin`);
     }
-  }, [state.message]);
+  }, [state.id]);
 
   return (
     <form
