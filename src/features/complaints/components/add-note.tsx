@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import AddNoteIcon from '@/assets/icons/add-note';
 import NoteIcon from '@/assets/icons/note';
 import FormErrors from '@/shared/components/form-errors';
+import Button from '@/shared/components/button';
 import { addComplaintNote } from '../api/add-note';
 
 type Props = { id: string };
@@ -57,15 +58,15 @@ function AddNote({ id }: Props) {
       )}
 
       <div className="flex justify-end">
-        <button
-          disabled={pending}
-          className="button flex items-center gap-2 max-lg:w-fit lg:justify-center"
+        <Button
+          pending={pending}
+          className="flex items-center gap-2 max-lg:w-fit lg:justify-center"
         >
           <span>
             <AddNoteIcon className="size-5" />
           </span>
           <span>{t('add')}</span>
-        </button>
+        </Button>
       </div>
       <FormErrors message={state.message} className="lg:text-xs" />
     </form>

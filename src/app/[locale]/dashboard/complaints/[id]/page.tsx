@@ -14,8 +14,6 @@ type Props = { params: Promise<{ id: string }> };
 async function ComplaintDetailsPage({ params }: Props) {
   const { id } = await params;
 
-  console.log('id: ', id);
-
   return <ComplaintDetails id={id} />;
 }
 

@@ -1,10 +1,13 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect, useMemo, useCallback, memo } from 'react';
 import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 import { useSidebarContext } from '../store/sidebar';
+import { useScreenSize } from '../hooks/use-screen-size';
+import { useScrollLock } from '../hooks/use-scroll-lock';
 import SidebarLink from './sidebar-link';
 import Logout from '@/features/auth/components/logout';
 import ThemeToggle from './theme-toggle';
@@ -17,19 +20,29 @@ type SidebarProps = { role: 'Administrator' | 'Employee' };
 
 function Sidebar({ role }: SidebarProps) {
   const t = useTranslations('sidebar');
-  const { isOpen, setIsOpen } = useSidebarContext();
 
-  const tabs = getSidebarTabs(role, t);
+  const { isOpen, setIsOpen } = useSidebarContext();
+  const { width } = useScreenSize();
+  const { isLocked, lock, unlock } = useScrollLock({ autoLock: false });
+
+  const handleClose = useCallback(() => {
+    unlock();
+    setIsOpen(false);
+  }, []);
+
+  useEffect(() => {
+    if ((isOpen || isLocked) && width >= 1024) {
+      handleClose();
+    } else if (isOpen && !isLocked && width < 1024) {
+      lock();
+    }
+  }, [isOpen, width, lock, unlock, handleClose]);
+
+  const tabs = useMemo(() => getSidebarTabs(role, t), [role, t]);
 
   return (
     <>
-      {isOpen && (
-        <div
-          aria-hidden
-          onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-40 h-screen w-screen bg-black/50 lg:hidden"
-        />
-      )}
+      {isOpen && <Backdrop onClose={handleClose} />}
 
       <aside
         id="sidebar"
@@ -40,47 +53,81 @@ function Sidebar({ role }: SidebarProps) {
         )}
       >
         <nav className="grid h-full grid-rows-[auto_auto_1fr]">
-          <div className="flex items-center justify-between p-4">
-            <div className="flex items-center gap-2">
-              <div className="relative size-7">
-                <Image
-                  src={logoImg}
-                  alt=""
-                  aria-hidden
-                  fill
-                  sizes="28px"
-                  className="object-contain object-center"
-                />
-              </div>
-              <h1 className="text-2xl font-bold">{t('title')}</h1>
-            </div>
+          <SidebarHeader
+            title={t('title')}
+            isOpen={isOpen}
+            onClose={handleClose}
+          />
 
-            {isOpen && <CloseMenu />}
-          </div>
-
-          <ul className="bort space-y-2 p-4">
+          <ul className="space-y-2 p-4">
             {tabs.map((tab) => (
               <SidebarLink
                 key={tab.href}
                 {...tab}
-                onNvaigate={() => setIsOpen(false)}
+                onNvaigate={handleClose}
                 icon={<tab.icon className="size-6 shrink-0" />}
               />
             ))}
           </ul>
 
-          <div className="m-4 flex flex-col justify-end space-y-2">
-            <Logout />
-
-            <div className="bg-primary-background flex items-center justify-center gap-2 rounded-2xl p-2 lg:hidden">
-              <ThemeToggle />
-              <LocaleToggle />
-            </div>
-          </div>
+          <SidebarFooter />
         </nav>
       </aside>
     </>
   );
 }
+
+const Backdrop = memo(function Backdrop({ onClose }: { onClose: () => void }) {
+  return (
+    <div
+      aria-hidden
+      onClick={onClose}
+      className="fixed inset-0 z-40 h-screen w-screen bg-black/50 backdrop-blur-sm supports-backdrop-filter:bg-black/25 lg:hidden"
+    />
+  );
+});
+
+const SidebarHeader = memo(function SidebarHeader({
+  title,
+  isOpen,
+  onClose,
+}: {
+  title: string;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
+  return (
+    <div className="flex items-center justify-between p-4">
+      <div className="flex items-center gap-2">
+        <div className="relative size-7">
+          <Image
+            src={logoImg}
+            alt=""
+            aria-hidden
+            fill
+            sizes="28px"
+            className="object-contain object-center"
+          />
+        </div>
+        <h1 className="text-2xl font-bold">{title}</h1>
+      </div>
+
+      {isOpen && <CloseMenu onClose={onClose} />}
+    </div>
+  );
+});
+
+const SidebarFooter = memo(function SidebarFooter() {
+  return (
+    <div className="m-4 flex flex-col justify-end space-y-2">
+      <Logout />
+
+      <div className="bg-primary-background flex items-center justify-center gap-2 rounded-2xl p-2 lg:hidden">
+        <ThemeToggle />
+        <LocaleToggle />
+      </div>
+    </div>
+  );
+});
 
 export default Sidebar;

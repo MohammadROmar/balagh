@@ -13,7 +13,7 @@ type ComplaintStatus = {
 };
 
 export async function changeComplaintStatus(
-  id: string,
+  data: { id: string; rowVersion: string },
   prevState: ComplaintStatus,
   formData: FormData,
 ): Promise<ComplaintStatus> {
@@ -26,31 +26,17 @@ export async function changeComplaintStatus(
   try {
     const token = (await cookies()).get('access_token')?.value;
 
-    const fd = new FormData();
-
-    fd.append('complaintId', 'null');
-    fd.append('newStatus', 'null');
-    fd.append('governmentalEntityId', 'null');
-    fd.append('location', 'null');
-    fd.append('description', 'null');
-    fd.append('complaintFiles', 'null');
-
     const response = await fetch(
-      `${process.env.BACKEND_BASE_URL}/api/Complaints/UpdateComplaint/${id}`,
+      `${process.env.BACKEND_BASE_URL}/api/Complaints/UpdateComplaint/${data.id}`,
       {
         method: 'POST',
-
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          complaintId: id,
           newStatus: status,
-          governmentalEntityId: null,
-          location: null,
-          description: null,
-          complaintFiles: null,
+          rowVersion: data.rowVersion,
         }),
       },
     );
@@ -63,7 +49,7 @@ export async function changeComplaintStatus(
       };
     }
 
-    updateTag(`complaint-${id}`);
+    updateTag(`complaint-${data.id}`);
     updateTag(`complaints`);
   } catch (e) {
     console.error(e);

@@ -13,7 +13,10 @@ function ComaplintHistory({ t, histories }: Props) {
           const isAddAction = history.changeType.includes('Add');
 
           return (
-            <li key={history.id} className="grid grid-cols-[auto_1fr] gap-4">
+            <li
+              key={`history-${history.id}-${i}`}
+              className="grid grid-cols-[auto_1fr] gap-4"
+            >
               <div aria-hidden className="flex flex-col items-center">
                 <div className="bg-emerald-green size-5 shrink-0 rounded-full" />
                 {i !== histories.length - 1 && (

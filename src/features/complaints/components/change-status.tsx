@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 import Select from 'react-select';
@@ -11,21 +11,26 @@ import SaveIcon from '@/assets/icons/save';
 import FormErrors from '@/shared/components/form-errors';
 import { complaintStatus } from '../models/status';
 import { changeComplaintStatus } from '../api/change-status';
+import Button from '@/shared/components/button';
 import type { TFunction } from '@/shared/models/tfunction';
+import type { Complaint } from '../models/complaint';
 
-type Props = { id: string; status: string };
+type Props = { complaint: Complaint };
 type StatusSelectProps = {
   status: string;
   t: TFunction<'complaintsPage.details'>;
 };
 
-function ChangeComplaintStatus({ id, status }: Props) {
-  const action = changeComplaintStatus.bind(null, id);
+function ChangeComplaintStatus({ complaint }: Props) {
+  const action = changeComplaintStatus.bind(null, {
+    id: complaint.id.toString(),
+    rowVersion: complaint.rowVersion,
+  });
 
   const [state, formAction, pending] = useActionState(action, {
     id: '',
     message: undefined,
-    status,
+    status: complaint.status,
   });
 
   const t = useTranslations('complaintsPage.details');
@@ -57,15 +62,15 @@ function ChangeComplaintStatus({ id, status }: Props) {
       )}
 
       <div className="mt-2 flex justify-end">
-        <button
-          disabled={pending}
-          className="button flex items-center gap-2 max-lg:w-fit lg:justify-center"
+        <Button
+          pending={pending}
+          className="flex items-center gap-2 max-lg:w-fit lg:justify-center"
         >
           <span>
             <SaveIcon className="size-5" />
           </span>
           <span>{t('save')}</span>
-        </button>
+        </Button>
       </div>
 
       <FormErrors message={state.message} className="lg:text-sm" />

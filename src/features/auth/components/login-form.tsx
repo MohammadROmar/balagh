@@ -5,9 +5,9 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
 import Input from '@/shared/components/input';
-import { loginAction } from '../api/login';
 import FormErrors from '@/shared/components/form-errors';
-import LoadingIndicator from '@/assets/icons/loading-indicator';
+import Button from '@/shared/components/button';
+import { loginAction } from '../api/login';
 
 export default function LoginForm() {
   const [state, formAction, pending] = useActionState(loginAction, {
@@ -45,13 +45,13 @@ export default function LoginForm() {
         </Link>
       </div>
 
-      <button
-        disabled={pending}
+      <Button
+        pending={pending}
         aria-live="polite"
-        className="button flex items-center justify-center"
+        className="flex items-center justify-center"
       >
-        {pending ? <LoadingIndicator className="w-7" /> : tLogin('login')}
-      </button>
+        {tLogin('login')}
+      </Button>
 
       <FormErrors message={state.message} />
     </form>

@@ -10,6 +10,7 @@ export type Complaint = {
   lockedBy: string;
   lockedByUserName: string;
   isLocked: boolean;
+  rowVersion: string;
   complaintFiles: ComplaintFile[];
   histories: History[];
   notes: Note[];

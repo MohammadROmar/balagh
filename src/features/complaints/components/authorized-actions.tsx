@@ -17,10 +17,7 @@ async function AuthorizedActions({ complaint }: AuthorizedActionsProps) {
   if (complaint.lockedBy === user.id) {
     return (
       <>
-        <ChangeComplaintStatus
-          id={complaint.id.toString()}
-          status={complaint.status}
-        />
+        <ChangeComplaintStatus complaint={complaint} />
         <hr className="my-4 text-gray-300 dark:text-gray-600" />
         <AddNote id={complaint.id.toString()} />
         <hr className="my-4 text-gray-300 dark:text-gray-600" />

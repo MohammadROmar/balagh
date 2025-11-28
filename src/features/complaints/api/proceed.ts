@@ -8,20 +8,21 @@ import type { ActionMessage } from '@/core/models/action-message';
 type ProceedComplaintActionState = { id: string; message: ActionMessage };
 
 export async function proceedComplaint(
-  id: string,
+  data: { id: string; rowVersion: string },
   prevState: ProceedComplaintActionState,
 ): Promise<ProceedComplaintActionState> {
   try {
     const token = (await cookies()).get('access_token')?.value;
 
     const response = await fetch(
-      `${process.env.BACKEND_BASE_URL}/api/Complaints/ProceedComplaint/${id}`,
+      `${process.env.BACKEND_BASE_URL}/api/Complaints/ProceedComplaint/${data.id}`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ rowVersion: data.rowVersion }),
       },
     );
 
@@ -32,7 +33,7 @@ export async function proceedComplaint(
       };
     }
 
-    updateTag(`complaint-${id}`);
+    updateTag(`complaint-${data.id}`);
     updateTag(`complaints`);
   } catch (e) {
     console.error(e);

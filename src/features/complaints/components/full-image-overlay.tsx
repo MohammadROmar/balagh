@@ -8,6 +8,7 @@ import ArrowLeftIcon from '@/assets/icons/arrow-left';
 import XIcon from '@/assets/icons/x';
 import type { ComplaintFile } from '../models/complaint';
 import { FocusTrap } from 'focus-trap-react';
+import { useScrollLock } from '@/shared/hooks/use-scroll-lock';
 
 type Props = {
   images: ComplaintFile[];
@@ -20,27 +21,35 @@ function ComplaintFullImageOverlay({ images, opendImage, close }: Props) {
 
   const t = useTranslations('complaintsPage.details.imagesOverlay');
 
+  const { unlock } = useScrollLock();
+
+  function closeOverlay() {
+    unlock();
+    close();
+  }
+
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
-        close();
+        closeOverlay();
       }
     }
 
     document.addEventListener('keydown', onKeyDown);
 
     return () => {
+      unlock();
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [close]);
+  }, [closeOverlay]);
 
   return (
     <FocusTrap active focusTrapOptions={{ allowOutsideClick: false }}>
-      <section className="fixed z-60 size-full before:fixed before:inset-0 before:z-50 before:size-full before:bg-black/75 before:backdrop-blur-sm supports-backdrop-filter:before:bg-black/30">
+      <section className="fixed z-60 size-full before:fixed before:inset-0 before:z-50 before:size-full before:bg-black/50 before:backdrop-blur-sm supports-backdrop-filter:before:bg-black/30">
         <button
           aria-label={t('close')}
           title={t('close')}
-          onClick={close}
+          onClick={closeOverlay}
           className="bg-primary-background fixed top-4 z-70 cursor-pointer rounded-full border border-gray-300 p-2 ltr:right-4 rtl:left-4 dark:border-gray-600"
         >
           <XIcon className="size-3" />

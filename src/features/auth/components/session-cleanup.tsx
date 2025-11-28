@@ -53,7 +53,7 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
             {t('subtitle')}
           </p>
 
-          <LoadingIndicator className="text-teal w-12" />
+          <LoadingIndicator className="text-teal flex w-12 items-center justify-center" />
         </div>
       </section>
     );

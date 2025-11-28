@@ -7,6 +7,7 @@ import { useRouter } from '@/i18n/navigation';
 import { useDialog } from '@/shared/hooks/use-dialog';
 import Modal from '@/shared/components/modal';
 import ShieldIcon from '@/assets/icons/shield';
+import Button from '@/shared/components/button';
 import { logoutAction } from '../api/logout';
 
 export default function RefreshTokens() {
@@ -65,9 +66,7 @@ export default function RefreshTokens() {
       }
     >
       <form action={formAction}>
-        <button disabled={pending} className="button">
-          {t('action')}
-        </button>
+        <Button pending={pending}>{t('action')}</Button>
       </form>
     </Modal>
   );

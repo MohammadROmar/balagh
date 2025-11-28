@@ -40,7 +40,7 @@ function Modal({
       aria-live="polite"
       aria-labelledby="modal-title"
       aria-describedby="modal-description"
-      className="bg-secondary-background animate-fade-in fixed top-1/2 w-fit -translate-1/2 overflow-visible rounded-2xl border border-gray-300 p-4 text-center backdrop:bg-black/50 max-sm:w-full sm:max-w-lg sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2 dark:border-gray-600"
+      className="bg-secondary-background animate-fade-in fixed top-1/2 w-fit -translate-1/2 overflow-visible rounded-2xl border border-gray-300 p-4 text-center backdrop:bg-black/50 backdrop:backdrop-blur-sm backdrop:supports-backdrop-filter:bg-black/30 max-sm:w-full sm:max-w-lg sm:min-w-md ltr:left-1/2 rtl:right-1/2 rtl:translate-x-1/2 dark:border-gray-600"
       {...props}
     >
       {icon && (

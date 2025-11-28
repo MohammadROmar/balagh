@@ -18,8 +18,6 @@ async function ComplaintDetails({ id }: { id?: String }) {
     },
   );
 
-  console.log(data);
-
   if (data.message !== 'success') {
     return notFound();
   }

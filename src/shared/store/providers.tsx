@@ -8,7 +8,7 @@ function Providers({ children }: PropsWithChildren) {
   return (
     <NextIntlClientProvider>
       <ThemeProvider attribute="class" enableSystem defaultTheme="system">
-        <SidebarContextProvider>{children}</SidebarContextProvider>
+        {children}
       </ThemeProvider>
     </NextIntlClientProvider>
   );

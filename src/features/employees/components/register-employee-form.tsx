@@ -6,7 +6,7 @@ import { toast } from 'sonner';
 
 import Input from '@/shared/components/input';
 import FormErrors from '@/shared/components/form-errors';
-import LoadingIndicator from '@/assets/icons/loading-indicator';
+import Button from '@/shared/components/button';
 import { registerEmployeeAction } from '../api/register-employee';
 
 export default function RegisterEmployeeForm() {
@@ -88,16 +88,12 @@ export default function RegisterEmployeeForm() {
           >
             {t('actions.reset')}
           </button>
-          <button
-            disabled={pending}
-            className="button flex items-center justify-center max-lg:w-full"
+          <Button
+            pending={pending}
+            className="flex items-center justify-center max-lg:w-full"
           >
-            {pending ? (
-              <LoadingIndicator className="w-7" />
-            ) : (
-              t('actions.register')
-            )}
-          </button>
+            {t('actions.register')}
+          </Button>
         </div>
       </div>
 

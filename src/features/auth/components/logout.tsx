@@ -5,8 +5,8 @@ import { useTranslations } from 'next-intl';
 
 import { useDialog } from '@/shared/hooks/use-dialog';
 import Modal from '@/shared/components/modal';
-import LoadingIndicator from '@/assets/icons/loading-indicator';
 import LogoutIcon from '@/assets/icons/logout';
+import Button from '@/shared/components/button';
 import { logoutAction } from '../api/logout';
 
 export default function Logout() {
@@ -33,13 +33,13 @@ export default function Logout() {
           action={formAction}
           className="flex items-center gap-2 max-md:flex-col"
         >
-          <button
-            disabled={pending}
-            className="button bg-error focus:outline-error flex items-center justify-center"
+          <Button
+            pending={pending}
+            className="bg-error focus:outline-error flex items-center justify-center"
             style={{ backgroundImage: 'none' }}
           >
-            {pending ? <LoadingIndicator className="w-7" /> : t('logout')}
-          </button>
+            {t('logout')}
+          </Button>
           <button
             type="button"
             onClick={() => setIsOpen(false)}

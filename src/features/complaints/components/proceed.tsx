@@ -7,10 +7,14 @@ import { toast } from 'sonner';
 import FormErrors from '@/shared/components/form-errors';
 import ProcessIcon from '@/assets/icons/process';
 import { proceedComplaint } from '../api/proceed';
+import Button from '@/shared/components/button';
 import type { Complaint } from '../models/complaint';
 
 function ProceedComplaint({ complaint }: { complaint: Complaint }) {
-  const action = proceedComplaint.bind(null, complaint.id.toString());
+  const action = proceedComplaint.bind(null, {
+    id: complaint.id.toString(),
+    rowVersion: complaint.rowVersion,
+  });
 
   const [state, formAction, pending] = useActionState(action, {
     id: '',
@@ -44,15 +48,15 @@ function ProceedComplaint({ complaint }: { complaint: Complaint }) {
           {t('complaintLocked', { name: complaint.lockedByUserName })}
         </p>
       ) : (
-        <button
-          disabled={pending}
-          className="button mt-2 flex items-center gap-2 max-lg:w-fit lg:justify-center"
+        <Button
+          pending={pending}
+          className="mt-2 flex items-center gap-2 max-lg:w-fit lg:justify-center"
         >
           <span>
             <ProcessIcon className="size-5" />
           </span>
           <span>{t('proceed')}</span>
-        </button>
+        </Button>
       )}
       <FormErrors message={state.message} className="lg:text-xs" />
     </form>

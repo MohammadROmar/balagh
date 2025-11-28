@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import FormErrors from '@/shared/components/form-errors';
 import RequestIcon from '@/assets/icons/request';
 import SendIcon from '@/assets/icons/send';
+import Button from '@/shared/components/button';
 import { requestAdditionalInfo } from '../api/request-info';
 
 function RequestComplaintInfo({ id }: { id: string }) {
@@ -58,15 +59,15 @@ function RequestComplaintInfo({ id }: { id: string }) {
       )}
 
       <div className="flex justify-end">
-        <button
-          disabled={pending}
-          className="button flex items-center gap-2 max-lg:w-fit lg:justify-center"
+        <Button
+          pending={pending}
+          className="flex items-center gap-2 max-lg:w-fit lg:justify-center"
         >
           <span>
             <SendIcon className="size-5" />
           </span>
           <span>{t('sendRequest')}</span>
-        </button>
+        </Button>
       </div>
       <FormErrors message={state.message} className="lg:text-xs" />
     </form>

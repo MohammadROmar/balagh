@@ -1,14 +1,18 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
+import { useScreenSize } from '../hooks/use-screen-size';
 import { useSidebarContext } from '../store/sidebar';
 import HamburgerIcon from '@/assets/icons/hamburger';
 import CloseIcon from '@/assets/icons/close';
-import { useTranslations } from 'next-intl';
-import useViewport from '../hooks/use-viewport';
+import { memo } from 'react';
+
+type CloseMenuProps = { onClose: () => void };
 
 export default function HamburgerMenuBtn() {
   const { setIsOpen } = useSidebarContext();
-  const { width } = useViewport();
+  const { width } = useScreenSize();
   const t = useTranslations('accessibility.sidebar');
 
   const isMobile = width < 1024;
@@ -27,8 +31,7 @@ export default function HamburgerMenuBtn() {
   );
 }
 
-export function CloseMenu() {
-  const { setIsOpen } = useSidebarContext();
+export const CloseMenu = memo(function CloseMenu({ onClose }: CloseMenuProps) {
   const t = useTranslations('accessibility.sidebar');
 
   return (
@@ -37,10 +40,10 @@ export function CloseMenu() {
       title={t('close')}
       aria-controls="sidebar"
       aria-expanded="true"
-      onClick={() => setIsOpen(false)}
+      onClick={onClose}
       className="cursor-pointer lg:hidden"
     >
       <CloseIcon className="size-7 shrink-0 lg:hidden" />
     </button>
   );
-}
+});
