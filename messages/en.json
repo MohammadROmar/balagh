@@ -36,7 +36,8 @@
     "registerEmployee": {
       "title": "Add New Employee",
       "subtitle": "Create a profile for a new employee",
-      "registered": "Employee registered successfully"
+      "registered": "Employee registered successfully",
+      "govermentalEntity": "Govermental Entity"
     }
   },
   "complaintsPage": {
@@ -171,5 +172,12 @@
     "complaints": "Complaints",
     "dashboard": "Dashboard",
     "register-employee": "Register Employee"
+  },
+  "passwordRules": {
+    "hasUpper": "Contains uppercase letter",
+    "hasLower": "Contains lowercase letter",
+    "hasNumber": "Contains a number",
+    "hasSpecial": "Contains a special character",
+    "length": "Contains at least 8 characters"
   }
 }

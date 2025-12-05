@@ -3,6 +3,8 @@ import { getTranslations } from 'next-intl/server';
 
 import RegisterEmployeeForm from '@/features/employees/components/register-employee-form';
 import PageTitle from '@/shared/components/page-title';
+import { get } from '@/shared/api/get';
+import { GovermentalEntities } from '@/features/employees/models/govermental-entities';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
@@ -13,11 +15,16 @@ export async function generateMetadata(): Promise<Metadata> {
 async function RegisterEmployeePage() {
   const t = await getTranslations('adminPages.registerEmployee');
 
+  const response = await get<GovermentalEntities>('/api/govermentalEntities');
+
+  const govermentalEntities =
+    response.message === 'success' ? response.data : null;
+
   return (
     <section className="grid grid-rows-[auto_auto_1fr]">
       <PageTitle title={t('title')} />
 
-      <RegisterEmployeeForm />
+      <RegisterEmployeeForm govermentalEntities={govermentalEntities} />
     </section>
   );
 }

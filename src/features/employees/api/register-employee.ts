@@ -15,6 +15,7 @@ type EmployeeCredentials = {
   phoneNumber: string;
   email: string;
   password: string;
+  govermentalEntity: string;
 };
 type EmployeeCredentialsErrors = Partial<
   Record<keyof EmployeeCredentials, boolean>
@@ -49,7 +50,7 @@ export async function registerEmployeeAction(
     const accessToken = (await cookies()).get('access_token')?.value;
 
     const fd = new FormData();
-    fd.append('governmentalEntityId', '1');
+    fd.append('governmentalEntityId', credentials.govermentalEntity);
     fd.append('userName', credentials.username);
     fd.append('email', credentials.email);
     fd.append('password', credentials.password);
@@ -94,5 +95,6 @@ function validateEmployeeCredentials(credentials: EmployeeCredentials) {
     phoneNumber: !isValidPhoneNumber(credentials.phoneNumber),
     email: !isValidEmail(credentials.email),
     password: !isValidPassword(credentials.password),
+    govermentalEntity: !isValidText(credentials.govermentalEntity),
   } satisfies EmployeeCredentialsErrors;
 }

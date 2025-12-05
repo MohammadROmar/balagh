@@ -36,7 +36,8 @@
     "registerEmployee": {
       "title": "إضافة موظف جديد",
       "subtitle": "انشئ ملفاً شخصياً جديداً لموظف",
-      "registered": "تم تسجيل الموظف بنجاح"
+      "registered": "تم تسجيل الموظف بنجاح",
+      "govermentalEntity": "الجهة الحكومية"
     }
   },
   "complaintsPage": {
@@ -171,5 +172,12 @@
     "complaints": "الشكاوى",
     "dashboard": "لوحة التحكم",
     "register-employee": "تسجيل موظف"
+  },
+  "passwordRules": {
+    "hasUpper": "تحتوي حرف انغليزي كبير",
+    "hasLower": "تحتوي حرف انغليزي صغير",
+    "hasNumber": "تحتوي على رقم",
+    "hasSpecial": "تحتوي على محرف",
+    "length": "تحتوي على 8 محارف على الأقل"
   }
 }

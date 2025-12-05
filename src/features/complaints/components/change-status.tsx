@@ -4,14 +4,14 @@ import { useActionState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 import Select from 'react-select';
-import clsx from 'clsx';
 
 import StatusIcon from '@/assets/icons/status';
+import Button from '@/shared/components/button';
 import SaveIcon from '@/assets/icons/save';
 import FormErrors from '@/shared/components/form-errors';
 import { complaintStatus } from '../models/status';
 import { changeComplaintStatus } from '../api/change-status';
-import Button from '@/shared/components/button';
+import { selectorStyles } from '@/core/config/selector-styles';
 import type { TFunction } from '@/shared/models/tfunction';
 import type { Complaint } from '../models/complaint';
 
@@ -92,22 +92,7 @@ function StatusSelect({ status, t }: StatusSelectProps) {
       name="status"
       options={options}
       defaultValue={options.find((option) => option.value === status)}
-      classNames={{
-        control: (state) =>
-          clsx(
-            'focus:ring-emerald-green! transition-none! w-full! rounded-2xl! border! border-gray-200! bg-gray-50! focus:ring-2! focus:outline-0! lg:text-sm! dark:border-gray-700! dark:bg-gray-800!',
-            state.isFocused && 'outline-2! outline-emerald-green!',
-          ),
-        menu: () =>
-          'rounded-2xl! bg-primary-background! overflow-hidden! text-current! border border-gray-300! dark:border-gray-600!',
-        option: (state) =>
-          state.isSelected
-            ? 'bg-emerald-green!'
-            : state.isFocused
-              ? 'bg-emerald-green/50! cursor-pointer!'
-              : '',
-        singleValue: () => 'text-current!',
-      }}
+      classNames={selectorStyles}
     />
   );
 }

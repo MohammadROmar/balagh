@@ -5,11 +5,18 @@ import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
 import Input from '@/shared/components/input';
+import PasswordInput from '@/shared/components/password-input';
 import FormErrors from '@/shared/components/form-errors';
 import Button from '@/shared/components/button';
+import GovermentalEentitySelector from './govermental-entity-selector';
 import { registerEmployeeAction } from '../api/register-employee';
+import type { GovermentalEntities } from '../models/govermental-entities';
 
-export default function RegisterEmployeeForm() {
+type Props = {
+  govermentalEntities: GovermentalEntities | null;
+};
+
+export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
   const [state, formAction, pending] = useActionState(registerEmployeeAction, {
     id: '',
     message: undefined,
@@ -37,25 +44,31 @@ export default function RegisterEmployeeForm() {
       className="lg:bg-secondary-background mt-8 space-y-6 border-gray-300 max-lg:flex max-lg:flex-col max-lg:justify-between lg:h-fit lg:rounded-2xl lg:border lg:p-4 dark:border-gray-600"
     >
       <div className="space-y-6">
-        <Input
-          id="username"
-          label={t('labels.username')}
-          autoComplete="username"
-          placeholder={t('placeholders.username')}
-          defaultValue={state.defaultValues?.username}
-          error={state.errors?.username ? t('errors.username') : undefined}
-          className="lg:bg-primary-background!"
-        />
-        <Input
-          id="phoneNumber"
-          label={t('labels.phoneNumber')}
-          autoComplete="tel"
-          defaultValue={state.defaultValues?.phoneNumber}
-          placeholder={t('placeholders.phoneNumber')}
-          error={
-            state.errors?.phoneNumber ? t('errors.phoneNumber') : undefined
-          }
-          className="lg:bg-primary-background!"
+        <div className="flex w-full flex-col gap-6 lg:flex-row">
+          <Input
+            id="username"
+            label={t('labels.username')}
+            autoComplete="username"
+            placeholder={t('placeholders.username')}
+            defaultValue={state.defaultValues?.username}
+            error={state.errors?.username ? t('errors.username') : undefined}
+            className="lg:bg-primary-background!"
+          />
+          <Input
+            id="phoneNumber"
+            label={t('labels.phoneNumber')}
+            autoComplete="tel"
+            defaultValue={state.defaultValues?.phoneNumber}
+            placeholder={t('placeholders.phoneNumber')}
+            error={
+              state.errors?.phoneNumber ? t('errors.phoneNumber') : undefined
+            }
+            className="lg:bg-primary-background!"
+          />
+        </div>
+        <GovermentalEentitySelector
+          title={tEmployee('govermentalEntity')}
+          govermentalEntities={govermentalEntities}
         />
         <Input
           id="email"
@@ -67,11 +80,8 @@ export default function RegisterEmployeeForm() {
           error={state.errors?.email ? t('errors.email') : undefined}
           className="lg:bg-primary-background!"
         />
-        <Input
-          id="password"
+        <PasswordInput
           label={t('labels.password')}
-          autoComplete="new-password"
-          type="password"
           defaultValue={state.defaultValues?.password}
           placeholder={t('placeholders.password')}
           error={state.errors?.password ? t('errors.password') : undefined}

@@ -5,7 +5,7 @@ type InputProps = { label: string; error?: string } & ComponentProps<'input'>;
 
 function Input({ label, id, error, ...props }: InputProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex w-full flex-col gap-2">
       <label htmlFor={id}>{label}</label>
 
       <input
