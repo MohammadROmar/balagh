@@ -14,7 +14,10 @@ function AuthLayout({ role, children }: AuthLayoutProps) {
   return (
     <SidebarContextProvider>
       <div className="min-h-screen grid-cols-[auto_auto_auto_1fr] lg:grid">
-        <Toaster className="rtl:font-kufi! ltr:font-open-sans!" />
+        <Toaster
+          position="top-center"
+          className="rtl:font-kufi! ltr:font-open-sans!"
+        />
         <div id="modals" />
         <Sidebar role={role} />
         <div className="grid size-full grid-rows-[auto_1fr]">

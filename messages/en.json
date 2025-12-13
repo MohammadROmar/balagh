@@ -76,9 +76,9 @@
       "actions": "Actions",
       "history": "Complaint History",
       "performed": "Performed",
-      "invalid-input": "PLease enter a valid value for this field",
+      "invalid-input": "Please enter a valid value for this field",
       "requestInfoTitle": "Request Additional Information",
-      "requestInfo": "e.g. PLease provide a clearer image.",
+      "requestInfo": "e.g. Please provide a clearer image.",
       "sendRequest": "Send Request",
       "addNote": "Add a note about this complaint...",
       "complaintLocked": "This complaint is being processed by {name}",
@@ -163,7 +163,7 @@
   "session": {
     "end": {
       "title": "Session Expired",
-      "subtitle": "Your session has expired for security reasons.\nPleaase log in again to continue managing complaints.",
+      "subtitle": "Your session has expired for security reasons.\nPlease log in again to continue managing complaints.",
       "action": "Log in Again"
     }
   },

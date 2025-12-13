@@ -33,8 +33,8 @@
   --color-info-bg: #d5dcfc;
 
   --animate-float: float 6s ease-in-out infinite;
-  --animate-fade: fade 1s ease-in-out infinite;
   --animate-fade-in: fade-in 0.25s ease-in;
+  --animate-fade: fade 1s ease-in-out infinite;
 
   @keyframes float {
     0%,

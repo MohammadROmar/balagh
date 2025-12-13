@@ -26,40 +26,40 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
     }
   }, [hasUser]);
 
-  if (!hasUser) {
-    return (
-      <section className="mx-auto flex h-screen w-screen items-center justify-center p-4 text-center lg:w-[50vw]">
-        <div className="bg-secondary-background flex h-fit flex-col items-center justify-center gap-4 rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
-          <div className="mb-12 flex items-center gap-2">
-            <div className="relative size-7">
-              <Image
-                src={logoImg}
-                alt=""
-                aria-hidden
-                fill
-                sizes="28px"
-                className="object-contain object-center"
-              />
-            </div>
-            <h1 className="text-2xl font-bold">{t('balagh')}</h1>
-          </div>
-
-          <div className="bg-teal/30 flex items-center justify-center rounded-full p-3">
-            <InfoIcon className="text-teal size-8" />
-          </div>
-
-          <h2 className="text-heading text-4xl font-bold">{t('title')}</h2>
-          <p className="text-secondary max-w-lg text-sm text-balance">
-            {t('subtitle')}
-          </p>
-
-          <LoadingIndicator className="text-teal flex w-12 items-center justify-center" />
-        </div>
-      </section>
-    );
+  if (hasUser) {
+    return null;
   }
 
-  return null;
+  return (
+    <section className="mx-auto flex h-screen w-screen items-center justify-center p-4 text-center lg:w-[50vw]">
+      <div className="bg-secondary-background flex h-fit flex-col items-center justify-center gap-4 rounded-2xl border border-gray-300 p-4 shadow dark:border-gray-600">
+        <div className="mb-12 flex items-center gap-2">
+          <div className="relative size-7">
+            <Image
+              src={logoImg}
+              alt=""
+              aria-hidden
+              fill
+              sizes="28px"
+              className="object-contain object-center"
+            />
+          </div>
+          <h1 className="text-2xl font-bold">{t('balagh')}</h1>
+        </div>
+
+        <div className="bg-teal/30 flex items-center justify-center rounded-full p-3">
+          <InfoIcon className="text-teal size-8" />
+        </div>
+
+        <h2 className="text-heading text-4xl font-bold">{t('title')}</h2>
+        <p className="text-secondary max-w-lg text-sm text-balance">
+          {t('subtitle')}
+        </p>
+
+        <LoadingIndicator className="text-teal flex w-12 items-center justify-center" />
+      </div>
+    </section>
+  );
 }
 
 export default SessionCleanup;
