@@ -6,12 +6,13 @@ type InputProps = { label: string; error?: string } & ComponentProps<'input'>;
 function Input({ label, id, error, ...props }: InputProps) {
   return (
     <div className="flex w-full flex-col gap-2">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} className="text-sm">
+        {label}
+      </label>
 
       <input
         id={id}
         name={id}
-        required
         {...props}
         className={clsx('input', props.className)}
       />

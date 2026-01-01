@@ -8,8 +8,9 @@ import Modal from '@/shared/components/modal';
 import LogoutIcon from '@/assets/icons/logout';
 import Button from '@/shared/components/button';
 import { logoutAction } from '../api/logout';
+import clsx from 'clsx';
 
-export default function Logout() {
+function Logout({ textStyles }: { textStyles?: string }) {
   const [, formAction, pending] = useActionState(logoutAction, null);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Logout() {
         >
           <Button
             pending={pending}
-            className="bg-error focus:outline-error flex items-center justify-center"
+            className="bg-error flex items-center justify-center focus:outline-none!"
             style={{ backgroundImage: 'none' }}
           >
             {t('logout')}
@@ -53,13 +54,18 @@ export default function Logout() {
 
       <button
         onClick={() => setIsOpen(true)}
-        className="text-error focus:outline-error button flex cursor-pointer gap-2 bg-none p-4 font-normal"
+        className={clsx(
+          'text-error button flex cursor-pointer gap-2 bg-none p-4 font-normal focus:outline-none!',
+          textStyles && 'p-0!',
+        )}
       >
         <span>
           <LogoutIcon className="size-6 shrink-0" />
         </span>
-        <span>{t('logout')}</span>
+        <span className={textStyles}>{t('logout')}</span>
       </button>
     </>
   );
 }
+
+export default Logout;

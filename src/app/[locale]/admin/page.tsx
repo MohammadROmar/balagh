@@ -1,12 +1,13 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getLocale } from 'next-intl/server';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations('metadata');
+import { redirect } from '@/i18n/navigation';
 
-  return { title: t('admin') };
+async function AdminPage() {
+  const locale = await getLocale();
+
+  redirect({ href: '/admin/reports', locale });
+
+  return null;
 }
 
-export default function AdminPage() {
-  return <div>AdminPage</div>;
-}
+export default AdminPage;

@@ -1,15 +1,27 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import Select from 'react-select';
+import clsx from 'clsx';
 
 import { selectorStyles } from '@/core/config/selector-styles';
 import type { GovermentalEntities } from '../models/govermental-entities';
-import clsx from 'clsx';
 
 type Props = {
+  hasDefaultValue?: boolean;
+  required?: boolean;
   title: string;
   govermentalEntities: GovermentalEntities | null;
 };
 
-function GovermentalEentitySelector({ title, govermentalEntities }: Props) {
+function GovermentalEentitySelector({
+  title,
+  required = true,
+  hasDefaultValue = true,
+  govermentalEntities,
+}: Props) {
+  const tSelect = useTranslations('select');
+
   if (!govermentalEntities) return null;
 
   const options = govermentalEntities.map((entity) => ({
@@ -19,14 +31,18 @@ function GovermentalEentitySelector({ title, govermentalEntities }: Props) {
 
   return (
     <div className="flex w-full flex-col gap-2">
-      <label htmlFor="govermentalEntity">{title}</label>
+      <label htmlFor="govermentalEntity" className="text-sm">
+        {title}
+      </label>
       <Select
-        required
+        required={required}
         isClearable={false}
-        inputId="govermentalEntity"
-        name="govermentalEntity"
+        inputId="govermentalEntityId"
+        name="govermentalEntityId"
         options={options}
-        defaultValue={options[0]}
+        noOptionsMessage={() => tSelect('noOption')}
+        placeholder={tSelect('placeholder')}
+        defaultValue={hasDefaultValue ? options[0] : undefined}
         classNames={{
           ...selectorStyles,
           control: (state) =>

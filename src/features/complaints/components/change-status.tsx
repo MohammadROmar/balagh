@@ -3,23 +3,16 @@
 import { useActionState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
-import Select from 'react-select';
 
 import StatusIcon from '@/assets/icons/status';
 import Button from '@/shared/components/button';
 import SaveIcon from '@/assets/icons/save';
 import FormErrors from '@/shared/components/form-errors';
-import { complaintStatus } from '../models/status';
+import StatusSelect from './status-selector';
 import { changeComplaintStatus } from '../api/change-status';
-import { selectorStyles } from '@/core/config/selector-styles';
-import type { TFunction } from '@/shared/models/tfunction';
 import type { Complaint } from '../models/complaint';
 
 type Props = { complaint: Complaint };
-type StatusSelectProps = {
-  status: string;
-  t: TFunction<'complaintsPage.details'>;
-};
 
 function ChangeComplaintStatus({ complaint }: Props) {
   const action = changeComplaintStatus.bind(null, {
@@ -56,7 +49,7 @@ function ChangeComplaintStatus({ complaint }: Props) {
         </span>
         <span>{t('changeStatus')}</span>
       </label>
-      <StatusSelect status={state.status} t={t} />
+      <StatusSelect status={state.status} />
       {state.message === 'invalid-input' && (
         <p className="text-error text-sm">{t('invalid-input')}</p>
       )}
@@ -75,25 +68,6 @@ function ChangeComplaintStatus({ complaint }: Props) {
 
       <FormErrors message={state.message} className="lg:text-sm" />
     </form>
-  );
-}
-
-function StatusSelect({ status, t }: StatusSelectProps) {
-  const options = complaintStatus.map((status) => ({
-    value: status,
-    label: t(`statuses.${status}` as any),
-  }));
-
-  return (
-    <Select
-      required
-      isClearable={false}
-      inputId="status"
-      name="status"
-      options={options}
-      defaultValue={options.find((option) => option.value === status)}
-      classNames={selectorStyles}
-    />
   );
 }
 

@@ -1,5 +1,6 @@
 import { Toaster } from 'sonner';
 import type { PropsWithChildren } from 'react';
+import clsx from 'clsx';
 
 import SidebarContextProvider from '@/shared/store/sidebar';
 import Sidebar from '@/shared/components/sidebar';
@@ -11,18 +12,30 @@ type AuthLayoutProps = {
 } & PropsWithChildren;
 
 function AuthLayout({ role, children }: AuthLayoutProps) {
+  const isAdmin = role === 'Administrator';
+
   return (
     <SidebarContextProvider>
-      <div className="min-h-screen grid-cols-[auto_auto_auto_1fr] lg:grid">
+      <div
+        className={clsx(
+          'min-h-screen lg:grid',
+          isAdmin && 'grid-cols-[auto_auto_auto_1fr]',
+        )}
+      >
         <Toaster
           position="top-center"
           className="rtl:font-kufi! ltr:font-open-sans!"
         />
         <div id="modals" />
-        <Sidebar role={role} />
+        {isAdmin && <Sidebar role={role} />}
         <div className="grid size-full grid-rows-[auto_1fr]">
           <Header />
-          <main className="m-auto grid size-full max-w-5xl overflow-auto p-4 lg:p-8">
+          <main
+            className={clsx(
+              'm-auto grid size-full overflow-auto p-4 lg:p-8',
+              isAdmin && 'max-w-6xl',
+            )}
+          >
             {children}
           </main>
         </div>

@@ -105,7 +105,7 @@
     "logout": "تسجيل الخروج",
     "cancel": "إلغاء",
     "admin": {
-      "overview": "نظرة عامة",
+      "overview": "التقارير والاحصائيات",
       "registerEmployee": "تسجيل موظف",
       "complaints": "الشكاوى"
     },
@@ -141,6 +141,34 @@
     "subtitle": "هذه الصقحة التي طلبتها غير موجودة او تمت ازالتها. تأكد من الـ URL أو قم بالعودة للصفة الرئيسية.",
     "goHome": "العودة للرئيسية"
   },
+  "reports": {
+    "title": "التقارير والاحصائيات",
+    "filteredBy": "ترتيب الاحصائيات",
+    "filtersTitle": "الفلاتر",
+    "applyFilters": "تطبيق الفلاتر",
+    "clearFilters": "ازالة الفلاتر",
+    "locationPlaceholder": "ادخل موقعاً...",
+    "types": {
+      "byStatus": "حسب الحالة",
+      "byGovEntity": "حسب الجهة الحكومية",
+      "byTime": "حسب الوقت"
+    },
+    "data": {
+      "status": "الحالة",
+      "complaintCount": "عدد الشكاوى",
+      "percentageOfTotalComplaints": "النسبة المئوية",
+      "govermentalEntityName": "الجهة الحكومية",
+      "year": "السنة",
+      "month": "الشهر"
+    },
+    "filters": {
+      "from": "من",
+      "to": "الى",
+      "govermentalEntityId": "الجهة الحكومية",
+      "location": "الموقع",
+      "status": "الحالة"
+    }
+  },
   "redirectPage": {
     "balagh": "بلاغ",
     "title": "انتهت صلاحية الجلسة",
@@ -171,7 +199,8 @@
     "admin": "المسؤول",
     "complaints": "الشكاوى",
     "dashboard": "لوحة التحكم",
-    "register-employee": "تسجيل موظف"
+    "register-employee": "تسجيل موظف",
+    "reports": "التقارير والاحصائيات"
   },
   "passwordRules": {
     "hasUpper": "تحتوي حرف انغليزي كبير",
@@ -179,5 +208,9 @@
     "hasNumber": "تحتوي على رقم",
     "hasSpecial": "تحتوي على محرف",
     "length": "تحتوي على 8 محارف على الأقل"
+  },
+  "select": {
+    "noOption": "لا يوجد خيارات",
+    "placeholder": "اختر..."
   }
 }

@@ -52,7 +52,7 @@ function RequestComplaintInfo({ id }: { id: string }) {
         required
         defaultValue={state.data}
         placeholder={t('requestInfo')}
-        className="input w-full lg:text-sm"
+        className="input bg-primary-background w-full lg:text-sm"
       />
       {state.message === 'invalid-input' && (
         <p className="text-error text-sm">{t('invalid-input')}</p>

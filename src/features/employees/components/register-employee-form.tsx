@@ -41,7 +41,7 @@ export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
   return (
     <form
       action={formAction}
-      className="lg:bg-secondary-background mt-8 space-y-6 border-gray-300 max-lg:flex max-lg:flex-col max-lg:justify-between lg:h-fit lg:rounded-2xl lg:border lg:p-4 dark:border-gray-600"
+      className="bg-secondary-background max-flex max-flex-col max-justify-between mt-8 h-fit space-y-6 rounded-2xl border border-gray-300 p-4 dark:border-gray-600"
     >
       <div className="space-y-6">
         <div className="flex w-full flex-col gap-6 lg:flex-row">
@@ -52,7 +52,7 @@ export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
             placeholder={t('placeholders.username')}
             defaultValue={state.defaultValues?.username}
             error={state.errors?.username ? t('errors.username') : undefined}
-            className="lg:bg-primary-background!"
+            className="bg-primary-background!"
           />
           <Input
             id="phoneNumber"
@@ -63,7 +63,7 @@ export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
             error={
               state.errors?.phoneNumber ? t('errors.phoneNumber') : undefined
             }
-            className="lg:bg-primary-background!"
+            className="bg-primary-background!"
           />
         </div>
         <GovermentalEentitySelector
@@ -78,29 +78,29 @@ export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
           defaultValue={state.defaultValues?.email}
           placeholder={t('placeholders.emailAddress')}
           error={state.errors?.email ? t('errors.email') : undefined}
-          className="lg:bg-primary-background!"
+          className="bg-primary-background!"
         />
         <PasswordInput
           label={t('labels.password')}
           defaultValue={state.defaultValues?.password}
           placeholder={t('placeholders.password')}
           error={state.errors?.password ? t('errors.password') : undefined}
-          className="lg:bg-primary-background!"
+          className="bg-primary-background!"
         />
       </div>
 
       <div className="flex justify-end">
-        <div className="flex items-center gap-2 max-lg:w-full max-lg:flex-col-reverse">
+        <div className="max-flex-col-reverse flex max-w-full items-center gap-2">
           <button
             disabled={pending}
             type="reset"
-            className="button bg-none font-normal text-current max-lg:w-full"
+            className="button max-w-full bg-none font-normal text-nowrap text-current"
           >
             {t('actions.reset')}
           </button>
           <Button
             pending={pending}
-            className="flex items-center justify-center max-lg:w-full"
+            className="flex max-w-full items-center justify-center"
           >
             {t('actions.register')}
           </Button>

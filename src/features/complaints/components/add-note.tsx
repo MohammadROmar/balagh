@@ -51,7 +51,7 @@ function AddNote({ id }: Props) {
         required
         defaultValue={state.note}
         placeholder={t('addNote')}
-        className="input w-full lg:text-sm"
+        className="input bg-primary-background w-full lg:text-sm"
       />
       {state.message === 'invalid-input' && (
         <p className="text-error text-sm">{t('invalid-input')}</p>

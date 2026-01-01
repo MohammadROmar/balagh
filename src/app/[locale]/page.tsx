@@ -25,9 +25,9 @@ async function HomePage({ params }: HomeProps) {
   const user = await getSession();
 
   if (user && user.role === 'Administrator') {
-    redirect({ href: '/admin', locale });
+    redirect({ href: '/admin/reports', locale });
   } else if (user && user.role === 'Employee') {
-    redirect({ href: '/dashboard', locale });
+    redirect({ href: '/dashboard/complaints', locale });
   }
 
   setRequestLocale(locale);

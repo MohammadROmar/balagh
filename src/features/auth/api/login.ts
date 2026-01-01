@@ -86,7 +86,8 @@ export async function loginAction(
       maxAge: 60 * 60 * 24 * 2,
     });
 
-    redirectPath = role === 'Administrator' ? '/admin' : '/dashboard';
+    redirectPath =
+      role === 'Administrator' ? '/admin/reports' : '/dashboard/complaints';
   } catch (e) {
     console.error(e);
 

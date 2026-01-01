@@ -14,7 +14,7 @@ async function EmployeeLayout({ children }: PropsWithChildren) {
   const user = await getSession();
 
   if (user && user.role !== 'Employee') {
-    redirect({ href: '/admin', locale });
+    redirect({ href: '/admin/reports', locale });
   }
 
   return (

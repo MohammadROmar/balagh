@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
+
 import ComplaintDetailsContainer from './details-container';
 import ActionsIcon from '@/assets/icons/actions';
-import type { Complaint } from '../models/complaint';
 import AuthorizedActions from './authorized-actions';
 import LoadingIndicator from '@/assets/icons/loading-indicator';
+import type { Complaint } from '../models/complaint';
 
 type ComplaintActionsProps = { title: string; complaint: Complaint };
 

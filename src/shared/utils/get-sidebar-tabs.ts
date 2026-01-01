@@ -9,7 +9,11 @@ export function getSidebarTabs(
 ) {
   if (role === 'Administrator') {
     return [
-      { label: t('admin.overview'), href: '/admin', icon: OverviewIcon },
+      {
+        label: t('admin.overview'),
+        href: '/admin/reports',
+        icon: OverviewIcon,
+      },
       {
         label: t('admin.registerEmployee'),
         href: '/admin/register-employee',
@@ -24,7 +28,6 @@ export function getSidebarTabs(
   }
 
   return [
-    { label: t('employee.overview'), href: '/dashboard', icon: OverviewIcon },
     {
       label: t('employee.complaints'),
       href: '/dashboard/complaints',
