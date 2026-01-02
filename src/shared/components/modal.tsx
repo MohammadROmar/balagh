@@ -28,6 +28,7 @@ function Modal({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -35,7 +36,6 @@ function Modal({
 
   return createPortal(
     <dialog
-      ref={props.ref}
       aria-modal
       aria-live="polite"
       aria-labelledby="modal-title"

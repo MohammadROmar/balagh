@@ -1,14 +1,14 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { FocusTrap } from 'focus-trap-react';
 
+import { useScrollLock } from '@/shared/hooks/use-scroll-lock';
 import ArrowLeftIcon from '@/assets/icons/arrow-left';
 import XIcon from '@/assets/icons/x';
 import type { ComplaintFile } from '../models/complaint';
-import { FocusTrap } from 'focus-trap-react';
-import { useScrollLock } from '@/shared/hooks/use-scroll-lock';
 
 type Props = {
   images: ComplaintFile[];
@@ -23,10 +23,10 @@ function ComplaintFullImageOverlay({ images, opendImage, close }: Props) {
 
   const { unlock } = useScrollLock();
 
-  function closeOverlay() {
+  const closeOverlay = useCallback(() => {
     unlock();
     close();
-  }
+  }, [unlock, close]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -41,7 +41,7 @@ function ComplaintFullImageOverlay({ images, opendImage, close }: Props) {
       unlock();
       document.removeEventListener('keydown', onKeyDown);
     };
-  }, [closeOverlay]);
+  }, [closeOverlay, unlock]);
 
   return (
     <FocusTrap active focusTrapOptions={{ allowOutsideClick: false }}>

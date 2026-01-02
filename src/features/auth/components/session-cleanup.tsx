@@ -24,7 +24,7 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
         .then(() => router.replace('/'))
         .catch((e) => console.error(e));
     }
-  }, [hasUser]);
+  }, [hasUser, router]);
 
   if (hasUser) {
     return null;

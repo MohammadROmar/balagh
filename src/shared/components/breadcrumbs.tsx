@@ -3,12 +3,13 @@
 import { useTranslations } from 'next-intl';
 
 import { Link, usePathname } from '@/i18n/navigation';
+import type { NavigationKeys } from '../models/navigation-keys';
 
 export default function Breadcrumbs() {
   const pathname = usePathname();
   const t = useTranslations('navigation');
 
-  const segments = pathname.split('/').filter(Boolean);
+  const segments = pathname.split('/').filter(Boolean) as NavigationKeys[];
 
   return (
     <ol className="text-secondary flex flex-wrap text-sm">
@@ -16,7 +17,7 @@ export default function Breadcrumbs() {
         const isLast = i === segments.length - 1;
 
         const href = `/${segments.slice(0, i + 1).join('/')}`;
-        const label = t.has(segment as any) ? t(segment as any) : segment;
+        const label = t.has(segment) ? t(segment) : segment;
 
         return (
           <li key={segment} className="flex">

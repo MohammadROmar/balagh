@@ -34,7 +34,7 @@ function ProceedComplaint({ complaint }: { complaint: Complaint }) {
         },
       });
     }
-  }, [state.id]);
+  }, [state.id, state.message, t]);
 
   return (
     <form action={formAction} className="space-y-1">

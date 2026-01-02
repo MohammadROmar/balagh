@@ -40,7 +40,7 @@ async function ComplaintInfo({ complaint, t }: Props) {
         <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
           <Detail
             title={t('status')}
-            value={t(`statuses.${complaint.status}` as any)}
+            value={t(`statuses.${complaint.status}`)}
             icon={StatusIcon}
           />
           <Detail

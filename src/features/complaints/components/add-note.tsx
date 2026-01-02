@@ -34,7 +34,7 @@ function AddNote({ id }: Props) {
         },
       });
     }
-  }, [state.id]);
+  }, [state.id, state.message, t]);
 
   return (
     <form action={formAction} className="w-full space-y-1">

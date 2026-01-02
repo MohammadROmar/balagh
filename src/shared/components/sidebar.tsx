@@ -28,7 +28,7 @@ function Sidebar({ role }: SidebarProps) {
   const handleClose = useCallback(() => {
     unlock();
     setIsOpen(false);
-  }, []);
+  }, [unlock, setIsOpen]);
 
   useEffect(() => {
     if ((isOpen || isLocked) && width >= 1024) {
@@ -36,7 +36,7 @@ function Sidebar({ role }: SidebarProps) {
     } else if (isOpen && !isLocked && width < 1024) {
       lock();
     }
-  }, [isOpen, width, lock, unlock, handleClose]);
+  }, [isOpen, width, lock, isLocked, unlock, handleClose]);
 
   const tabs = useMemo(() => getSidebarTabs(role, t), [role, t]);
 

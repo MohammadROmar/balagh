@@ -39,7 +39,7 @@ function ChangeComplaintStatus({ complaint }: Props) {
         },
       });
     }
-  }, [state.id]);
+  }, [state.id, state.message, t]);
 
   return (
     <form action={formAction} className="space-y-1">

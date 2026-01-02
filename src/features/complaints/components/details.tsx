@@ -10,7 +10,7 @@ import ComaplintHistory from '@/features/complaints/components/histories';
 import { get } from '@/shared/api/get';
 import type { Complaint } from '@/features/complaints/models/complaint';
 
-async function ComplaintDetails({ id }: { id?: String }) {
+async function ComplaintDetails({ id }: { id?: string }) {
   const data = await get<Complaint>(
     `/api/Complaints/GetComplaintById/${id}?includeNotes=true`,
     {

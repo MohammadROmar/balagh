@@ -2,7 +2,7 @@ export type Complaint = {
   id: number;
   userId: string;
   userName: string;
-  status: string;
+  status: ComplaintStatus;
   createdAt: string;
   location: string;
   description: string;
@@ -15,6 +15,8 @@ export type Complaint = {
   histories: History[];
   notes: Note[];
 };
+
+export type ComplaintStatus = 'New' | 'InProcessing' | 'Done' | 'Declined';
 
 export type ComplaintFile = {
   id: number;

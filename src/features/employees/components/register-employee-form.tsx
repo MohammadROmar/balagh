@@ -36,7 +36,7 @@ export default function RegisterEmployeeForm({ govermentalEntities }: Props) {
         },
       });
     }
-  }, [state.id]);
+  }, [state.id, state.message, tEmployee]);
 
   return (
     <form

@@ -6,6 +6,7 @@ import clsx from 'clsx';
 
 import { complaintStatus } from '../models/status';
 import { selectorStyles } from '@/core/config/selector-styles';
+import { ComplaintStatus } from '../models/complaint';
 
 type StatusSelectProps = { status?: string };
 
@@ -15,7 +16,7 @@ function StatusSelect({ status }: StatusSelectProps) {
 
   const options = complaintStatus.map((status) => ({
     value: status,
-    label: t(`${status}` as any),
+    label: t(`${status}`),
   }));
 
   return (
@@ -31,7 +32,7 @@ function StatusSelect({ status }: StatusSelectProps) {
       noOptionsMessage={() => tSelect('noOption')}
       placeholder={tSelect('placeholder')}
       classNames={{
-        ...selectorStyles,
+        ...selectorStyles<ComplaintStatus, string>(),
         control: (state) =>
           clsx(
             'focus:ring-emerald-green! py-0.5 transition-none! w-full! rounded-2xl! border! border-gray-200! bg-gray-50! focus:ring-2! focus:outline-0! lg:text-sm! dark:border-gray-700! dark:bg-gray-900!',

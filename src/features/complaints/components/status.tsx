@@ -1,13 +1,14 @@
 import clsx from 'clsx';
 
 import { TFunction } from '@/shared/models/tfunction';
+import { ComplaintStatus as Status } from '../models/complaint';
 
 type ComplaintStatusProps = {
-  status: string;
+  status: Status;
   t: TFunction<'complaintsPage.details'>;
 };
 
-function getStatusInfo(status: string) {
+function getStatusInfo(status: Status) {
   const statusStyles: { [key: string]: { text: string; bg: string } } = {
     New: { text: 'text-info', bg: 'bg-info-bg' },
     InProcessing: { text: 'text-warning', bg: 'bg-warning-bg' },
@@ -29,7 +30,7 @@ function ComplaintStatus({ status, t }: ComplaintStatusProps) {
         statusStyles.bg,
       )}
     >
-      {t(`statuses.${status}` as any)}
+      {t(`statuses.${status}`)}
     </p>
   );
 }

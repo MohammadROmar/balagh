@@ -32,7 +32,7 @@ function RequestComplaintInfo({ id }: { id: string }) {
         },
       });
     }
-  }, [state.id]);
+  }, [state.id, state.message, t]);
 
   return (
     <form action={formAction} className="space-y-1">

@@ -20,7 +20,7 @@ export default function NavigationBar() {
       { label: t('byGovEntity'), icon: government, to: 'by-gov-entity' },
       { label: t('byTime'), icon: date, to: 'by-time' },
     ],
-    [],
+    [t],
   );
 
   const segments = pathname.split('/').filter(Boolean);

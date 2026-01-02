@@ -31,7 +31,7 @@ const REQUIREMENTS = [
     key: 'length',
     test: (value: string) => value.length >= 8,
   },
-];
+] as const;
 
 function PasswordInput(props: InputProps) {
   const [password, setPassword] = useState('');
@@ -78,9 +78,7 @@ function PasswordRules({ password }: { password: string }) {
               <XIcon className="size-1.5" />
             )}
           </span>
-          <span className={passed ? 'text-success' : undefined}>
-            {t(key as any)}
-          </span>
+          <span className={passed ? 'text-success' : undefined}>{t(key)}</span>
         </li>
       ))}
     </ul>

@@ -29,7 +29,7 @@ export function useDialog(isOpen: boolean) {
 
       dialog.close();
     }
-  }, [isOpen]);
+  }, [isOpen, isLocked, isSidebarOpen, lock, unlock]);
 
   return dialogRef;
 }
