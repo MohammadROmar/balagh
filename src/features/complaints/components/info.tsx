@@ -11,6 +11,7 @@ import DateIcon from '@/assets/icons/date';
 import ComplaintDetailsContainer from './details-container';
 import LockIcon from '@/assets/icons/lock';
 import { formatDate } from '@/shared/utils/format-date';
+import { splitOnUppercase } from '../utils/split-on-uppercase';
 import type { Complaint } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';
 
@@ -58,7 +59,7 @@ async function ComplaintInfo({ complaint, t }: Props) {
         <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
           <Detail
             title={t('governmentalEntity')}
-            value={complaint.governmentalEntityId.toString()}
+            value={splitOnUppercase(complaint.govermentalEntityName)}
             icon={GovernmentIcon}
           />
           <Detail

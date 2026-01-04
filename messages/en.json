@@ -11,6 +11,12 @@
     "complaints": {
       "allComplaintsTitle": "All Complaints",
       "complaintDetailsTitle": "Complaint Details"
+    },
+    "reports": {
+      "title": "Reports & Analytics",
+      "byStatus": "By status",
+      "byGovEntity": "By gov entity",
+      "byTime": "By time"
     }
   },
   "accessibility": {
@@ -50,7 +56,7 @@
       "info": "Complaints Information",
       "images": "Complaint Images",
       "documents": "Complaint Documents",
-      "governmentalEntity": "Government",
+      "governmentalEntity": "Government Entity",
       "complaintID": "Complaint ID",
       "user": "User",
       "location": "Location",
@@ -146,6 +152,8 @@
     "filteredBy": "Analytics Filtered",
     "filtersTitle": "Filters",
     "locationPlaceholder": "Enter location...",
+    "noData": "No data found",
+    "downloadReport": "Download Report",
     "applyFilters": "Apply Filters",
     "clearFilters": "Clear Filters",
     "types": {
@@ -200,7 +208,9 @@
     "complaints": "Complaints",
     "dashboard": "Dashboard",
     "register-employee": "Register Employee",
-    "reports": "Reports & Analytics"
+    "reports": "Reports & Analytics",
+    "by-time": "By Time",
+    "by-gov-entity": "By Gov Entity"
   },
   "passwordRules": {
     "hasUpper": "Contains uppercase letter",

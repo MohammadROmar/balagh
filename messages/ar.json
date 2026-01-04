@@ -11,6 +11,12 @@
     "complaints": {
       "allComplaintsTitle": "جميع الشكاوى",
       "complaintDetailsTitle": "تفاصيل الشكوى"
+    },
+    "reports": {
+      "title": "التقارير والاحصائيات",
+      "byStatus": "حسب الحالة",
+      "byGovEntity": "حسب الجهة الحكومية",
+      "byTime": "حسب الوقت"
     }
   },
   "accessibility": {
@@ -51,7 +57,7 @@
       "proceedComplaint": "متابعة الشكوى",
       "processdNote": "متابعة هذه الشكوى سيقوم باسنادها اليك، ما يمنع الموظفين الاخرين من تعديلها.",
       "proceed": "متابعة",
-      "governmentalEntity": "المحافظة",
+      "governmentalEntity": "الجهة الحكومية",
       "complaintID": "معرف الشكوى",
       "proceedSuccess": "تم تعيين متابعة الشكوى لك",
       "lockStatus": "حالة القفل",
@@ -146,6 +152,8 @@
     "filteredBy": "ترتيب الاحصائيات",
     "filtersTitle": "الفلاتر",
     "applyFilters": "تطبيق الفلاتر",
+    "noData": "لم يتم العثور على أي بيانات",
+    "downloadReport": "تحميل التقرير",
     "clearFilters": "ازالة الفلاتر",
     "locationPlaceholder": "ادخل موقعاً...",
     "types": {
@@ -200,7 +208,9 @@
     "complaints": "الشكاوى",
     "dashboard": "لوحة التحكم",
     "register-employee": "تسجيل موظف",
-    "reports": "التقارير والاحصائيات"
+    "reports": "التقارير والاحصائيات",
+    "by-time": "حسب الوقت",
+    "by-gov-entity": "حسب الجهة الحكومية"
   },
   "passwordRules": {
     "hasUpper": "تحتوي حرف انغليزي كبير",

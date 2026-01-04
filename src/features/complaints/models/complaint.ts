@@ -7,6 +7,7 @@ export type Complaint = {
   location: string;
   description: string;
   governmentalEntityId: number;
+  govermentalEntityName: string;
   lockedBy: string;
   lockedByUserName: string;
   isLocked: boolean;

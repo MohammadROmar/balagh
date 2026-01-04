@@ -44,7 +44,7 @@ function GovermentalEentitySelector({
         placeholder={tSelect('placeholder')}
         defaultValue={hasDefaultValue ? options[0] : undefined}
         classNames={{
-          ...selectorStyles,
+          ...selectorStyles<string, string>(),
           control: (state) =>
             clsx(
               'focus:ring-emerald-green! py-0.5 transition-none! w-full! rounded-2xl! border! border-gray-200! bg-gray-50! focus:ring-2! focus:outline-0! lg:text-sm! dark:border-gray-700! dark:bg-gray-900!',

@@ -1,17 +1,27 @@
+import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import ByStatusFilters from '@/features/reports/components/by-status-filter';
+import ExportReport from '@/features/reports/components/export';
 import { getReportData } from '@/features/reports/utils/get-report-data';
 import { getGovermentalEntities } from '@/features/reports/utils/get-govermental-entities';
 import type { FilterByStatus } from '@/features/reports/models/filters';
 import type { TFunction } from '@/shared/models/tfunction';
 
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('metadata');
+
+  return {
+    title: `${t('reports.title')} | ${t('reports.byStatus')} - ${t('root.title')}`,
+  };
+}
 type SearchParams = Record<string, string>;
 type PageProps = { searchParams: Promise<SearchParams> };
 
 export default async function ReportsByStatusPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const govermentalEntities = await getGovermentalEntities();
+
   const t = await getTranslations('reports');
 
   return (
@@ -24,9 +34,12 @@ export default async function ReportsByStatusPage({ searchParams }: PageProps) {
         <ByStatusFilters govermentalEntities={govermentalEntities} />
       </section>
       <section className="bg-secondary-background mt-6 rounded-2xl border border-gray-300 p-4 dark:border-gray-600">
-        <h3 className="text-xl font-semibold capitalize">
-          {t('filteredBy')} {t('types.byStatus')}
-        </h3>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <h3 className="text-xl font-semibold capitalize">
+            {t('filteredBy')} {t('types.byStatus')}
+          </h3>
+          <ExportReport type="status" />
+        </div>
         <hr className="my-4 text-gray-300 dark:text-gray-600" />
         <DataChart t={t} searchParms={params} />
       </section>
@@ -39,7 +52,7 @@ type DataChartProps = { t: TFunction<'reports'>; searchParms: SearchParams };
 async function DataChart({ t, searchParms }: DataChartProps) {
   const data = await getReportData<FilterByStatus>(searchParms, 'status');
 
-  if (data.length === 0) return <p className="text-center">No data found</p>;
+  if (data.length === 0) return <p className="text-center">{t('noData')}</p>;
 
   return (
     <ul className="space-y-2">

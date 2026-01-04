@@ -1,15 +1,15 @@
-import localFont from 'next/font/local';
+import { Open_Sans, Noto_Kufi_Arabic } from 'next/font/google';
 
-const openSans = localFont({
+const notoKufiArabic = Noto_Kufi_Arabic({
+  variable: '--kufi-font',
+  subsets: ['latin'],
   preload: true,
-  variable: '--open-sans-font',
-  src: '../../assets/fonts/NotoKufiArabic-VariableFont_wght.ttf',
 });
 
-const notoKufiArabic = localFont({
+const openSans = Open_Sans({
+  variable: '--open-sans-font',
+  subsets: ['latin'],
   preload: true,
-  variable: '--kufi-font',
-  src: '../../assets/fonts/NotoKufiArabic-VariableFont_wght.ttf',
 });
 
 export const fontVariables = `${openSans.variable} ${notoKufiArabic.variable}`;

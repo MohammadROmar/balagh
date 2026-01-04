@@ -45,7 +45,7 @@ function Logout({ textStyles }: { textStyles?: string }) {
             type="button"
             onClick={() => setIsOpen(false)}
             disabled={pending}
-            className="button border border-gray-300 bg-none font-normal text-current dark:border-gray-600"
+            className="button border border-gray-300 bg-none font-normal text-current focus:outline-none dark:border-gray-600"
           >
             {t('cancel')}
           </button>
