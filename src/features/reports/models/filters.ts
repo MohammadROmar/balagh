@@ -1,5 +1,7 @@
+import type { ComplaintStatus } from '@/features/complaints/models/complaint';
+
 export type FilterByStatus = {
-  status: string;
+  status: ComplaintStatus;
   complaintCount: number;
   percentageOfTotalComplaints: number;
 }[];

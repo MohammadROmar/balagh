@@ -54,6 +54,8 @@ async function DataChart({ t, searchParms }: DataChartProps) {
 
   if (data.length === 0) return <p className="text-center">{t('noData')}</p>;
 
+  const tStatus = await getTranslations('complaintsPage.details.statuses');
+
   return (
     <ul className="space-y-2">
       {data.map((item) => {
@@ -62,7 +64,7 @@ async function DataChart({ t, searchParms }: DataChartProps) {
         return (
           <li key={item.status} className="space-y-1">
             <div className="flex items-center justify-between gap-4">
-              <p className="font-medium">{item.status}</p>
+              <p className="font-medium">{tStatus(item.status)}</p>
               <p className="text-sm">
                 {t('data.complaintCount')}:{' '}
                 <span className="text-emerald-green">

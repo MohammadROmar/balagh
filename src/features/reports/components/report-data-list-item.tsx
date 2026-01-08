@@ -1,4 +1,5 @@
-import { TFunction } from '@/shared/models/tfunction';
+import { splitOnUppercase } from '@/features/complaints/utils/split-on-uppercase';
+import type { TFunction } from '@/shared/models/tfunction';
 
 type Props = {
   title: string;
@@ -18,7 +19,7 @@ async function ReportDataListItem({
   return (
     <li className="space-y-2">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-        <p className="font-medium">{title}</p>
+        <p className="font-medium">{splitOnUppercase(title)}</p>
         <p className="text-sm">
           {t('data.complaintCount')}:{' '}
           <span className="text-emerald-green">{complaintCount}</span>

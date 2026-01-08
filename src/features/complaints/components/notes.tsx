@@ -22,7 +22,7 @@ async function ComplaintNotes({ t, notes }: ComplaintNotesProps) {
             key={`complaint-note-${note.id}`}
             className="bg-primary-background space-y-0.5 rounded-2xl px-4 py-2"
           >
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-x-4">
               <h4 className="text-heading font-medium">{note.userName}</h4>
               <time
                 dateTime={note.createdAt}

@@ -1,7 +1,7 @@
 import ComplaintDetailsContainer from './details-container';
 import HistoryIcon from '@/assets/icons/history';
 import type { History } from '../models/complaint';
-import { TFunction } from '@/shared/models/tfunction';
+import type { TFunction } from '@/shared/models/tfunction';
 
 type Props = { histories: History[]; t: TFunction<'complaintsPage.details'> };
 
@@ -10,7 +10,9 @@ function ComaplintHistory({ t, histories }: Props) {
     <ComplaintDetailsContainer title={t('history')} icon={HistoryIcon}>
       <ul>
         {histories.map((history, i) => {
-          const isAddAction = history.changeType.includes('Add');
+          const isNew =
+            history.oldValue.length == 0 || history.oldValue === '""';
+          const isFile = history.changeType.includes('File');
 
           return (
             <li
@@ -29,26 +31,30 @@ function ComaplintHistory({ t, histories }: Props) {
                     {history.userName}{' '}
                   </span>
                   <span>
-                    {t('performed')} {history.changeType}
+                    {t.has(`changeType.${history.changeType}`)
+                      ? t(`changeType.${history.changeType}`)
+                      : `${t('performed')} ${history.changeType}`}
                   </span>
                 </h4>
 
-                <p className="bg-primary-background space-x-1 rounded-2xl p-4 text-sm">
-                  {isAddAction ? (
-                    <span>{t('withValue')}</span>
-                  ) : (
-                    <>
-                      <span>{t('update')}</span>
-                      <span className="bg-warning-bg text-warning rounded-lg px-1 leading-none">
-                        {history.oldValue}
-                      </span>
-                      <span>{t('to')}</span>
-                    </>
-                  )}
-                  <span className="bg-success-bg text-success rounded-lg px-1 leading-none">
-                    {history.newValue}
-                  </span>
-                </p>
+                {!isFile && (
+                  <p className="bg-primary-background space-x-1 rounded-2xl p-4 text-sm">
+                    {isNew ? (
+                      <span>{t('withValue')}</span>
+                    ) : (
+                      <>
+                        <span>{t('update')}</span>
+                        <span className="bg-warning-bg text-warning rounded-lg px-1 leading-none">
+                          {history.oldValue.replaceAll('"', '')}
+                        </span>
+                        <span>{t('to')}</span>
+                      </>
+                    )}
+                    <span className="bg-success-bg text-success rounded-lg px-1 leading-none">
+                      {history.newValue.replaceAll('"', '')}
+                    </span>
+                  </p>
+                )}
               </div>
             </li>
           );

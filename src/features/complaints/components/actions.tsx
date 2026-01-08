@@ -14,7 +14,7 @@ function ComplaintActions({ title, complaint }: ComplaintActionsProps) {
       <Suspense
         fallback={
           <div className="flex items-center justify-center">
-            <LoadingIndicator className="text-emerald-green w-1/4" />
+            <LoadingIndicator className="text-emerald-green w-12" />
           </div>
         }
       >

@@ -82,7 +82,7 @@
       "view": "الاطلاع",
       "actions": "الاجراءات",
       "performed": "قام بـ",
-      "update": "قام بتغيير",
+      "update": "تم تغيير القيمة من",
       "complaintLocked": "يتم معالجة هذه الشكوى من قبل {name}",
       "to": "الى",
       "requestInfoTitle": "طلب معلومات اضافية",
@@ -102,6 +102,16 @@
         "close": "اغلاق",
         "next": "التالي",
         "prev": "السابق"
+      },
+      "changeType": {
+        "GovermentalEntityChange": "قام بتعديل الجهة الحكومية",
+        "UpdateStatus": "قام بتغيير الحالة",
+        "AddNote": "اضاف ملاحظة",
+        "RequestMoreInformation": "طلب معلومات اضافية",
+        "UpdateDescription": "قام بتحديث الشرح",
+        "AddFile": "أضاف ملفاً",
+        "DeleteFile": "حذف ملفاً",
+        "UpdateLocation": "قام بتحديث الموقع"
       }
     }
   },

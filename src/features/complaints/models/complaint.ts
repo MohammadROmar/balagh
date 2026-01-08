@@ -29,7 +29,7 @@ export type History = {
   complaintId: number;
   userId: string;
   userName: string;
-  changeType: string;
+  changeType: ComplaintChangeType;
   oldValue: string;
   newValue: string;
   changeDetails: string;
@@ -44,3 +44,13 @@ export type Note = {
   noteBody: string;
   createdAt: string;
 };
+
+export type ComplaintChangeType =
+  | 'AddFile'
+  | 'AddNote'
+  | 'DeleteFile'
+  | 'UpdateStatus'
+  | 'UpdateLocation'
+  | 'UpdateDescription'
+  | 'RequestMoreInformation'
+  | 'GovermentalEntityChange';

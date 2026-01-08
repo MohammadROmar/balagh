@@ -102,6 +102,16 @@
         "close": "Close",
         "next": "Next",
         "prev": "Previous"
+      },
+      "changeType": {
+        "GovermentalEntityChange": "changed govermental entity",
+        "UpdateStatus": "updated the status",
+        "AddNote": "added a note",
+        "RequestMoreInformation": "requested more info",
+        "UpdateDescription": "updated the description",
+        "AddFile": "added a new file",
+        "DeleteFile": "deleted a file",
+        "UpdateLocation": "updated the location"
       }
     }
   },
