@@ -11,7 +11,10 @@ function Button({ pending, children, ...props }: ButtonProps) {
     <button
       disabled={pending || props.disabled}
       {...props}
-      className={clsx('button', props.className)}
+      className={clsx(
+        'button flex items-center justify-center gap-2',
+        props.className,
+      )}
     >
       {pending ? <LoadingIndicator className="w-6" /> : children}
     </button>

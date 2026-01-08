@@ -2,7 +2,7 @@ import { Open_Sans, Noto_Kufi_Arabic } from 'next/font/google';
 
 const notoKufiArabic = Noto_Kufi_Arabic({
   variable: '--kufi-font',
-  subsets: ['latin'],
+  subsets: ['arabic'],
   preload: true,
 });
 

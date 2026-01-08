@@ -180,7 +180,12 @@
   "redirectPage": {
     "balagh": "Balagh",
     "title": "Session Expired",
-    "subtitle": "Your session has expired. For security reasons, we are cleaning your session and redirecting you to the homepage."
+    "subtitle": "Your session has expired. For security reasons, we are cleaning your session and redirecting you to the homepage.",
+    "redirect": {
+      "balagh": "Balagh",
+      "title": "You are now being redirected",
+      "subtitle": "Please wait a moment while you are redirected to your correct destination."
+    }
   },
   "errors": {
     "unknown": "Unknow error has occured. Please check your internet connection and try again later",

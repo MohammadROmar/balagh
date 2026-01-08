@@ -5,3 +5,5 @@ export const routing = defineRouting({
   localePrefix: 'always',
   defaultLocale: 'ar',
 });
+
+export type Locale = (typeof routing.locales)[number];

@@ -8,8 +8,6 @@ import LocaleToggle from '@/shared/components/locale-toggle';
 import LoginForm from '@/features/auth/components/login-form';
 import SidePanel from '@/features/auth/components/side-panel';
 import logoImg from '@/assets/images/logo.png';
-import { getSession } from '@/features/auth/api/get-session';
-import { redirect } from '@/i18n/navigation';
 
 type HomeProps = { params: Promise<{ locale: Locale }> };
 
@@ -21,14 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function HomePage({ params }: HomeProps) {
   const { locale } = await params;
-
-  const user = await getSession();
-
-  if (user && user.role === 'Administrator') {
-    redirect({ href: '/admin/reports', locale });
-  } else if (user && user.role === 'Employee') {
-    redirect({ href: '/dashboard/complaints', locale });
-  }
 
   setRequestLocale(locale);
 
@@ -59,7 +49,7 @@ async function HomePage({ params }: HomeProps) {
             </div>
           </div>
 
-          <div>
+          <div className="w-full">
             <h2 className="text-heading text-3xl font-bold tracking-tight">
               {t('login')}
             </h2>

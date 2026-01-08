@@ -37,7 +37,7 @@ function GovermentalEentitySelector({
       <Select
         required={required}
         isClearable={false}
-        inputId="govermentalEntityId"
+        inputId="govermentalEntity"
         name="govermentalEntityId"
         options={options}
         noOptionsMessage={() => tSelect('noOption')}

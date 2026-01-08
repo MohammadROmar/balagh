@@ -20,7 +20,7 @@ export default function HeaderLogo() {
   return (
     <div
       className={clsx(
-        'flex h-min items-center gap-2 p-4 lg:select-none',
+        'flex h-min items-center gap-2 py-4 lg:select-none',
         isAdmin && 'lg:opacity-0',
       )}
     >
