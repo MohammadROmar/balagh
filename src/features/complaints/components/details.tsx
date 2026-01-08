@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import PageTitle from '@/shared/components/page-title';
+import PageTitle from '@/features/dashboard/components/page-title';
 import ComplaintInfo from '@/features/complaints/components/info';
 import ComplaintFiles from '@/features/complaints/components/files';
 import ComplaintNotes from '@/features/complaints/components/notes';

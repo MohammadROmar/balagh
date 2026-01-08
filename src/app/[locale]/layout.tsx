@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { hasLocale, type Locale } from 'next-intl';
+import { hasLocale } from 'next-intl';
 import type { PropsWithChildren } from 'react';
 
 import Providers from '@/shared/store/providers';
@@ -10,7 +10,7 @@ import { fontVariables } from '@/core/config/fonts';
 import './globals.css';
 
 type LocaleLayoutProps = {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 } & PropsWithChildren;
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -41,7 +41,6 @@ async function LocaleLayout({ params, children }: LocaleLayoutProps) {
       dir={locale === 'en' ? 'ltr' : 'rtl'}
       suppressHydrationWarning
       className="scroll-smooth"
-      data-scroll-behavior="smooth"
     >
       <body
         className={`${fontVariables} ${locale === 'en' ? 'font-open-sans' : 'font-kufi'} selection:bg-emerald-green text-body bg-primary-background min-h-screen antialiased selection:text-white`}

@@ -2,7 +2,7 @@ import { getLocale } from 'next-intl/server';
 
 import ComplaintDetailsContainer from './details-container';
 import NoteIcon from '@/assets/icons/note';
-import { formatDate } from '@/shared/utils/format-date';
+import { formatDate } from '@/features/dashboard/utils/format-date';
 import type { Note } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';
 

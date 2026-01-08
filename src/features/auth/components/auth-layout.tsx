@@ -2,9 +2,9 @@ import { Toaster } from 'sonner';
 import type { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 
-import SidebarContextProvider from '@/shared/store/sidebar';
-import Sidebar from '@/shared/components/sidebar';
-import Header from '@/shared/components/header';
+import SidebarContextProvider from '@/features/dashboard/store/sidebar';
+import Sidebar from '@/features/dashboard/components/sidebar';
+import Header from '@/features/dashboard/components/header';
 import RefreshTokens from '@/features/auth/components/refresh-tokens';
 
 type AuthLayoutProps = {

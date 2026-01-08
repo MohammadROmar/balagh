@@ -10,7 +10,7 @@ import GovernmentIcon from '@/assets/icons/government';
 import DateIcon from '@/assets/icons/date';
 import ComplaintDetailsContainer from './details-container';
 import LockIcon from '@/assets/icons/lock';
-import { formatDate } from '@/shared/utils/format-date';
+import { formatDate } from '@/features/dashboard/utils/format-date';
 import { splitOnUppercase } from '../utils/split-on-uppercase';
 import type { Complaint } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';

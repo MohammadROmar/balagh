@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import type { Locale } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import ThemeToggle from '@/shared/components/theme-toggle';
 import LocaleToggle from '@/shared/components/locale-toggle';
@@ -9,19 +8,13 @@ import LoginForm from '@/features/auth/components/login-form';
 import SidePanel from '@/features/auth/components/side-panel';
 import logoImg from '@/assets/images/logo.png';
 
-type HomeProps = { params: Promise<{ locale: Locale }> };
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
 
   return { title: `${t('login')} - ${t('root.title')}` };
 }
 
-async function HomePage({ params }: HomeProps) {
-  const { locale } = await params;
-
-  setRequestLocale(locale);
-
+async function HomePage() {
   const t = await getTranslations('loginPage');
 
   return (

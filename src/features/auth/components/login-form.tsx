@@ -3,7 +3,6 @@
 import { useActionState } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { Link } from '@/i18n/navigation';
 import Input from '@/shared/components/input';
 import FormErrors from '@/shared/components/form-errors';
 import Button from '@/shared/components/button';
@@ -38,12 +37,6 @@ export default function LoginForm() {
         label={tForms('labels.password')}
         error={state.errors.password ? tForms('errors.password') : undefined}
       />
-
-      <div className="flex justify-end">
-        <Link href="/" className="text-emerald-green text-sm hover:opacity-90">
-          {tLogin('forgotPassword')}
-        </Link>
-      </div>
 
       <Button
         pending={pending}

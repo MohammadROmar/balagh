@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import ComplaintCard from '@/features/complaints/components/card';
-import PageTitle from '@/shared/components/page-title';
-import Pagination from '@/shared/components/pagination';
+import PageTitle from '@/features/dashboard/components/page-title';
+import Pagination from '@/features/dashboard/components/pagination';
 import { get } from '@/shared/api/get';
 import type { Complaints } from '../models/complaints';
 

@@ -1,12 +1,12 @@
 'use client';
 
+import { memo } from 'react';
 import { useTranslations } from 'next-intl';
 
-import { useScreenSize } from '../hooks/use-screen-size';
-import { useSidebarContext } from '../store/sidebar';
+import { useScreenSize } from '@/shared/hooks/use-screen-size';
+import { useSidebarContext } from '@/features/dashboard/store/sidebar';
 import HamburgerIcon from '@/assets/icons/hamburger';
 import CloseIcon from '@/assets/icons/close';
-import { memo } from 'react';
 
 type CloseMenuProps = { onClose: () => void };
 

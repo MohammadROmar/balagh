@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
 import RegisterEmployeeForm from '@/features/employees/components/register-employee-form';
-import PageTitle from '@/shared/components/page-title';
+import PageTitle from '@/features/dashboard/components/page-title';
 import { get } from '@/shared/api/get';
-import { GovermentalEntities } from '@/features/employees/models/govermental-entities';
+import type { GovermentalEntities } from '@/features/employees/models/govermental-entities';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');

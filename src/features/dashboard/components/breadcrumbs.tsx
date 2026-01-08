@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import { Link, usePathname } from '@/i18n/navigation';
-import type { NavigationKeys } from '../models/navigation-keys';
+import type { NavigationKeys } from '../../../shared/models/navigation-keys';
 
 export default function Breadcrumbs() {
   const pathname = usePathname();

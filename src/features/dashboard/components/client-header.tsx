@@ -8,8 +8,8 @@ import { usePathname } from '@/i18n/navigation';
 import Logout from '@/features/auth/components/logout';
 import HamburgerMenuBtn from './hamburger-menu-btn';
 import logoImg from '@/assets/images/logo.png';
-import ThemeToggle from './theme-toggle';
-import LocaleToggle from './locale-toggle';
+import ThemeToggle from '@/shared/components/theme-toggle';
+import LocaleToggle from '@/shared/components/locale-toggle';
 
 export default function HeaderLogo() {
   const t = useTranslations();

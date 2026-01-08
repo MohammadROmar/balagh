@@ -1,6 +1,8 @@
 import { useTranslations } from 'next-intl';
-import type { ActionMessage } from '@/core/models/action-message';
 import clsx from 'clsx';
+
+import InfoIcon from '@/assets/icons/info';
+import type { ActionMessage } from '@/core/models/action-message';
 
 type FormErrorsProps = {
   message: ActionMessage;
@@ -19,11 +21,12 @@ function FormErrors({ message, className }: FormErrorsProps) {
   }
 
   return (
-    <p
-      className={clsx('text-error mt-2 text-sm whitespace-pre-wrap', className)}
-    >
-      {t.has(message) ? t(message) : t('unknown')}
-    </p>
+    <div className="bg-error-bg border-error/35 mt-4 flex items-center gap-2 rounded-2xl border px-4 py-2 dark:bg-red-50/10">
+      <InfoIcon className="text-error size-4.5 shrink-0" />
+      <p className={clsx('text-error text-sm whitespace-pre-wrap', className)}>
+        {t.has(message) ? t(message) : t('unknown')}
+      </p>
+    </div>
   );
 }
 

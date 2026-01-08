@@ -33,7 +33,6 @@
   "loginPage": {
     "title": "Balagh",
     "subtitle": "Please enter your details to sign in.",
-    "forgotPassword": "Forgot Password?",
     "login": "Login",
     "description": "Efficient complaint management starts here",
     "actions": "Monitor, assign, and resolve with confidence."

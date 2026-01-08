@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { useRouter } from '@/i18n/navigation';
 import { useDialog } from '@/shared/hooks/use-dialog';
-import Modal from '@/shared/components/modal';
+import Modal from '@/features/dashboard/components/modal';
 import ShieldIcon from '@/assets/icons/shield';
 import Button from '@/shared/components/button';
 import { logoutAction } from '../api/logout';

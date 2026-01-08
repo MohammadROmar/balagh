@@ -3,7 +3,7 @@
 import { useRef, useEffect } from 'react';
 
 import { useScrollLock } from './use-scroll-lock';
-import { useSidebarContext } from '../store/sidebar';
+import { useSidebarContext } from '../../features/dashboard/store/sidebar';
 
 export function useDialog(isOpen: boolean) {
   const dialogRef = useRef<HTMLDialogElement>(null);

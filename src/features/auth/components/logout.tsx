@@ -2,13 +2,13 @@
 
 import { useActionState, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import clsx from 'clsx';
 
 import { useDialog } from '@/shared/hooks/use-dialog';
-import Modal from '@/shared/components/modal';
+import Modal from '@/features/dashboard/components/modal';
 import LogoutIcon from '@/assets/icons/logout';
 import Button from '@/shared/components/button';
 import { logoutAction } from '../api/logout';
-import clsx from 'clsx';
 
 function Logout({ textStyles }: { textStyles?: string }) {
   const [, formAction, pending] = useActionState(logoutAction, null);

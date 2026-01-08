@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import { getTranslations } from 'next-intl/server';
 
-import PageTitle from '@/shared/components/page-title';
+import PageTitle from '@/features/dashboard/components/page-title';
 import NavigationBar from '@/features/reports/components/navigation-bar';
 
 export async function generateMetadata(): Promise<Metadata> {

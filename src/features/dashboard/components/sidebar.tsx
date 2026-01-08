@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl';
 import clsx from 'clsx';
 
 import { useSidebarContext } from '../store/sidebar';
-import { useScreenSize } from '../hooks/use-screen-size';
-import { useScrollLock } from '../hooks/use-scroll-lock';
+import { useScreenSize } from '@/shared/hooks/use-screen-size';
+import { useScrollLock } from '@/shared/hooks/use-scroll-lock';
 import SidebarLink from './sidebar-link';
 import Logout from '@/features/auth/components/logout';
-import ThemeToggle from './theme-toggle';
-import LocaleToggle from './locale-toggle';
+import ThemeToggle from '@/shared/components/theme-toggle';
+import LocaleToggle from '@/shared/components/locale-toggle';
 import { CloseMenu } from './hamburger-menu-btn';
 import { getSidebarTabs } from '../utils/get-sidebar-tabs';
 import logoImg from '@/assets/images/logo.png';

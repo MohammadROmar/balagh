@@ -1,7 +1,7 @@
 import AddUserIcon from '@/assets/icons/add-user';
 import ComplaintIcon from '@/assets/icons/complaint';
 import OverviewIcon from '@/assets/icons/overview';
-import type { TFunction } from '../models/tfunction';
+import type { TFunction } from '../../../shared/models/tfunction';
 
 export function getSidebarTabs(
   role: 'Administrator' | 'Employee',

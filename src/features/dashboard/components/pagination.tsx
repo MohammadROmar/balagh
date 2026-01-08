@@ -4,8 +4,8 @@ import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 
 import { Link, useRouter } from '@/i18n/navigation';
-import { generatePageNumbers } from '../utils/generate-page-numbers';
 import ArrowLeftIcon from '@/assets/icons/arrow-left';
+import { generatePageNumbers } from '../utils/generate-page-numbers';
 
 interface PaginationProps {
   currentPage: number;
