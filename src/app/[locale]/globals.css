@@ -7,8 +7,9 @@
   --secondary-background: #ffffff;
   --border-color: #e5e7eb;
   --body-text-color: var(--color-gray-900);
-  --secondary-text-color: var(--color-gray-500);
+  --secondary-text-color: var(--color-gray-600);
   --heading-color: black;
+  --error-text: var(--color-red-600);
 }
 
 @theme inline {
@@ -23,14 +24,14 @@
   --color-primary-background: var(--primary-background);
   --color-secondary-background: var(--secondary-background);
   --color-secondary: var(--secondary-text-color);
-  --color-success: #22bb33;
-  --color-success-bg: #dcfce7;
+  --color-success: var(--color-green-600);
+  --color-success-bg: #e2f9ea;
   --color-warning: #9f6000;
   --color-warning-bg: #fff4de;
-  --color-error: #ef4444;
-  --color-error-bg: #ffe2e6;
+  --color-error: var(--error-text);
+  --color-error-bg: #fde8eb;
   --color-info: #31708f;
-  --color-info-bg: #d5dcfc;
+  --color-info-bg: #e7eaf8;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-fade-in: fade-in 0.25s ease-in;
@@ -76,6 +77,7 @@
   --body-text-color: var(--color-gray-100);
   --secondary-text-color: var(--color-gray-400);
   --heading-color: white;
+  --error-text: var(--color-red-400);
 }
 
 @utility bg-gradient {

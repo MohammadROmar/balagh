@@ -6,7 +6,7 @@ import ComplaintInfo from '@/features/complaints/components/info';
 import ComplaintFiles from '@/features/complaints/components/files';
 import ComplaintNotes from '@/features/complaints/components/notes';
 import ComplaintActions from '@/features/complaints/components/actions';
-import ComaplintHistory from '@/features/complaints/components/histories';
+import ComplaintHistory from '@/features/complaints/components/histories';
 import { get } from '@/shared/api/get';
 import type { Complaint } from '@/features/complaints/models/complaint';
 
@@ -40,7 +40,7 @@ async function ComplaintDetails({ id }: { id?: string }) {
             <ComplaintNotes t={t} notes={complaint.notes} />
           )}
           {complaint.histories.length > 0 && (
-            <ComaplintHistory t={t} histories={complaint.histories} />
+            <ComplaintHistory t={t} histories={complaint.histories} />
           )}
         </div>
 

@@ -28,7 +28,11 @@
       "open": "Close sidebar",
       "close": "Open sidebar"
     },
-    "pending": "Pending..."
+    "pending": "Pending...",
+    "pagination": {
+      "prev": "Previous page",
+      "next": "Next page"
+    }
   },
   "loginPage": {
     "title": "Balagh",
@@ -198,7 +202,7 @@
   },
   "errors": {
     "unknown": "Unknow error has occured. Please check your internet connection and try again later",
-    "server-error": "Could not connect to the server. Please try again later",
+    "server-error": "Couldn't connect to the server. Please try again later",
     "invalid-role": "An error occurred while trying to complete the operation. You are unauthorized",
     "failure": "An error occurred while trying to complete the operation. Please check your internet connection and try again later",
     "page": {

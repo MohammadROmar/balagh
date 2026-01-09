@@ -67,9 +67,7 @@ async function DataChart({ t, searchParms }: DataChartProps) {
               <p className="font-medium">{tStatus(item.status)}</p>
               <p className="text-sm">
                 {t('data.complaintCount')}:{' '}
-                <span className="text-emerald-green">
-                  {item.complaintCount}
-                </span>
+                <span className="font-semibold">{item.complaintCount}</span>
               </p>
             </div>
             <div className="bg-primary-background h-10 w-full overflow-hidden rounded-full">

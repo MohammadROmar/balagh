@@ -2,6 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { Link, useRouter } from '@/i18n/navigation';
 import ArrowLeftIcon from '@/assets/icons/arrow-left';
@@ -22,6 +23,8 @@ export default function Pagination({
 }: PaginationProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  const t = useTranslations('accessibility.pagination');
 
   const params = useMemo(() => {
     const p = new URLSearchParams(Array.from(searchParams.entries()));
@@ -46,11 +49,11 @@ export default function Pagination({
       <button
         onClick={() => {
           const prev = Math.max(1, currentPage - 1);
-
           router.push(buildHref(prev));
         }}
         disabled={currentPage === 1}
         aria-disabled={currentPage === 1}
+        aria-label={t('prev')}
         className="size-full cursor-pointer border-gray-300 p-2 disabled:cursor-not-allowed disabled:text-current/50 ltr:border-r rtl:border-l dark:border-gray-600"
       >
         <ArrowLeftIcon className="size-4 rtl:rotate-180" />
@@ -90,6 +93,7 @@ export default function Pagination({
           const next = Math.min(totalPages, currentPage + 1);
           router.push(buildHref(next));
         }}
+        aria-label={t('next')}
         disabled={currentPage === totalPages}
         aria-disabled={currentPage === totalPages}
         className="cursor-pointer p-2 disabled:cursor-not-allowed disabled:text-current/50"

@@ -29,13 +29,13 @@ async function RedirectPage() {
             <Image
               src={logoImg}
               alt=""
-              aria-hidden
-              fill
-              sizes="28px"
+              aria-labelledby="redirect-title"
               className="object-contain object-center"
             />
           </div>
-          <h1 className="text-2xl font-bold">{t('balagh')}</h1>
+          <h1 id="redirect-title" className="text-2xl font-bold">
+            {t('balagh')}
+          </h1>
         </div>
 
         <div className="bg-teal/30 flex items-center justify-center rounded-full p-3">
@@ -47,7 +47,7 @@ async function RedirectPage() {
           {t('subtitle')}
         </p>
 
-        <LoadingIndicator className="text-teal flex w-12 items-center justify-center" />
+        <LoadingIndicator className="text-emerald-green flex w-12 items-center justify-center" />
       </div>
     </section>
   );

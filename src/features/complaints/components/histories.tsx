@@ -5,7 +5,7 @@ import type { TFunction } from '@/shared/models/tfunction';
 
 type Props = { histories: History[]; t: TFunction<'complaintsPage.details'> };
 
-function ComaplintHistory({ t, histories }: Props) {
+function ComplaintHistory({ t, histories }: Props) {
   return (
     <ComplaintDetailsContainer title={t('history')} icon={HistoryIcon}>
       <ul>
@@ -27,7 +27,7 @@ function ComaplintHistory({ t, histories }: Props) {
               </div>
               <div className="space-y-2 pb-2">
                 <h4 className="text-heading font-medium">
-                  <span className="text-emerald-green">
+                  <span className="text-emerald-green font-semibold">
                     {history.userName}{' '}
                   </span>
                   <span>
@@ -64,4 +64,4 @@ function ComaplintHistory({ t, histories }: Props) {
   );
 }
 
-export default ComaplintHistory;
+export default ComplaintHistory;

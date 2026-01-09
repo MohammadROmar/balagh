@@ -29,9 +29,6 @@ export default function HeaderLogo() {
           src={logoImg}
           alt=""
           aria-labelledby="header-title"
-          aria-hidden
-          fill
-          sizes="28px"
           className="object-contain object-center"
         />
       </div>

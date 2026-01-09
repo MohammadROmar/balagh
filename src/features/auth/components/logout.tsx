@@ -14,8 +14,9 @@ function Logout({ textStyles }: { textStyles?: string }) {
   const [, formAction, pending] = useActionState(logoutAction, null);
 
   const [isOpen, setIsOpen] = useState(false);
-  const dialogRef = useDialog(isOpen);
   const t = useTranslations('sidebar');
+
+  const dialogRef = useDialog(isOpen);
 
   return (
     <>

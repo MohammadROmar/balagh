@@ -15,8 +15,13 @@ import LocaleToggle from '@/shared/components/locale-toggle';
 import { CloseMenu } from './hamburger-menu-btn';
 import { getSidebarTabs } from '../utils/get-sidebar-tabs';
 import logoImg from '@/assets/images/logo.png';
+import type { TFunction } from '@/shared/models/tfunction';
 
 type SidebarProps = { role: 'Administrator' | 'Employee' };
+type OnClose = { onClose: () => void };
+type SidebarHeaderProps = { title: string; isOpen: boolean } & OnClose;
+type SidebarNavigationProps = SidebarProps &
+  OnClose & { t: TFunction<'sidebar'> };
 
 function Sidebar({ role }: SidebarProps) {
   const t = useTranslations('sidebar');
@@ -38,8 +43,6 @@ function Sidebar({ role }: SidebarProps) {
     }
   }, [isOpen, width, lock, isLocked, unlock, handleClose]);
 
-  const tabs = useMemo(() => getSidebarTabs(role, t), [role, t]);
-
   return (
     <>
       {isOpen && <Backdrop onClose={handleClose} />}
@@ -48,30 +51,17 @@ function Sidebar({ role }: SidebarProps) {
         id="sidebar"
         aria-live="polite"
         className={clsx(
-          'bg-secondary-background fixed inset-y-0 z-50 max-h-screen w-80 max-w-[90vw] border-r border-gray-300 transition-transform duration-500 lg:sticky lg:top-0 ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
+          'bg-secondary-background fixed inset-y-0 z-50 grid h-full max-h-screen w-80 max-w-[90vw] grid-rows-[auto_1fr_auto] border-r border-gray-300 transition-transform duration-500 lg:sticky lg:top-0 ltr:left-0 max-lg:ltr:-translate-x-full rtl:right-0 max-lg:rtl:translate-x-full dark:border-gray-600',
           isOpen && 'translate-x-0!',
         )}
       >
-        <nav className="grid h-full grid-rows-[auto_auto_1fr]">
-          <SidebarHeader
-            title={t('title')}
-            isOpen={isOpen}
-            onClose={handleClose}
-          />
-
-          <ul className="space-y-2 p-4">
-            {tabs.map((tab) => (
-              <SidebarLink
-                key={tab.href}
-                {...tab}
-                onNvaigate={handleClose}
-                icon={<tab.icon className="size-6 shrink-0" />}
-              />
-            ))}
-          </ul>
-
-          <SidebarFooter />
-        </nav>
+        <SidebarHeader
+          title={t('title')}
+          isOpen={isOpen}
+          onClose={handleClose}
+        />
+        <SidebarNavigation role={role} t={t} onClose={handleClose} />
+        <SidebarFooter />
       </aside>
     </>
   );
@@ -87,15 +77,30 @@ const Backdrop = memo(function Backdrop({ onClose }: { onClose: () => void }) {
   );
 });
 
+function SidebarNavigation({ role, t, onClose }: SidebarNavigationProps) {
+  const tabs = useMemo(() => getSidebarTabs(role, t), [role, t]);
+
+  return (
+    <nav className="grid grid-rows-[auto_auto_1fr]">
+      <ul className="space-y-2 p-4">
+        {tabs.map((tab) => (
+          <SidebarLink
+            key={tab.href}
+            {...tab}
+            onNvaigate={onClose}
+            icon={<tab.icon className="size-6 shrink-0" />}
+          />
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 const SidebarHeader = memo(function SidebarHeader({
   title,
   isOpen,
   onClose,
-}: {
-  title: string;
-  isOpen: boolean;
-  onClose: () => void;
-}) {
+}: SidebarHeaderProps) {
   return (
     <div className="flex items-center justify-between p-4">
       <div className="flex items-center gap-2">
@@ -103,13 +108,13 @@ const SidebarHeader = memo(function SidebarHeader({
           <Image
             src={logoImg}
             alt=""
-            aria-hidden
-            fill
-            sizes="28px"
+            aria-labelledby="sidebar-title"
             className="object-contain object-center"
           />
         </div>
-        <h1 className="text-2xl font-bold">{title}</h1>
+        <h1 id="sidebar-title" className="text-2xl font-bold">
+          {title}
+        </h1>
       </div>
 
       {isOpen && <CloseMenu onClose={onClose} />}

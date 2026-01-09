@@ -9,15 +9,18 @@ import ImageIcon from '@/assets/icons/image';
 import PdfIcon from '@/assets/icons/pdf';
 import FileIcon from '@/assets/icons/file';
 import ComplaintDetailsContainer from './details-container';
+import LoadingIndicator from '@/assets/icons/loading-indicator';
 import { seperateComplaintFiles } from '../utils/seperate-files';
 import type { ComplaintFile } from '../models/complaint';
 import type { TFunction } from '@/shared/models/tfunction';
+import Ban from '@/assets/icons/ban';
 
 type ComplaintFilesProps = { complaintFiles: ComplaintFile[] };
 
 type ComplaintSubFilesProps = {
   t: TFunction<'complaintsPage.details'>;
 } & ComplaintFilesProps;
+type ImageStatus = 'loading' | 'loaded' | 'error';
 
 function ComplaintFiles({ complaintFiles }: ComplaintFilesProps) {
   const t = useTranslations('complaintsPage.details');
@@ -51,19 +54,13 @@ function ComplaintImages({ t, complaintFiles }: ComplaintSubFilesProps) {
             {complaintFiles.map((file, i) => (
               <li
                 key={`complaint-image-${file.id}`}
-                className="relative aspect-square overflow-hidden rounded-2xl"
+                className="bg-primary-background relative aspect-square overflow-hidden rounded-2xl"
               >
                 <button
                   onClick={() => setOpendImage(i)}
                   className="relative size-full cursor-pointer"
                 >
-                  <Image
-                    src={file.path}
-                    alt="Complaint image"
-                    fill
-                    sizes="(min-width: 48rem): 33.33vw, 50vw"
-                    className="object-cover object-center"
-                  />
+                  <ComplaintImage path={file.path} />
                 </button>
               </li>
             ))}
@@ -114,6 +111,34 @@ function ComplaintDocuments({ t, complaintFiles }: ComplaintSubFilesProps) {
         </p>
       )}
     </ComplaintDetailsContainer>
+  );
+}
+
+function ComplaintImage({ path }: { path: string }) {
+  const [status, setStatus] = useState<ImageStatus>('loading');
+
+  return (
+    <>
+      {status === 'loading' && (
+        <LoadingIndicator className="text-emerald-green absolute top-1/2 left-1/2 size-8 -translate-1/2" />
+      )}
+
+      {status === 'error' && (
+        <Ban className="text-error absolute top-1/2 left-1/2 size-8 -translate-1/2" />
+      )}
+
+      {status !== 'error' && (
+        <Image
+          src={path}
+          alt="Complaint image"
+          fill
+          sizes="(min-width: 48rem): 33.33vw, 50vw"
+          onLoadingComplete={() => setStatus('loaded')}
+          onError={() => setStatus('error')}
+          className="object-cover object-center"
+        />
+      )}
+    </>
   );
 }
 

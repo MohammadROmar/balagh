@@ -8,9 +8,9 @@ import { complaintStatus } from '../models/status';
 import { selectorStyles } from '@/core/config/selector-styles';
 import { ComplaintStatus } from '../models/complaint';
 
-type StatusSelectProps = { status?: string };
+type StatusSelectProps = { status?: string; required?: boolean };
 
-function StatusSelect({ status }: StatusSelectProps) {
+function StatusSelect({ status, required = false }: StatusSelectProps) {
   const t = useTranslations('complaintsPage.details.statuses');
   const tSelect = useTranslations('select');
 
@@ -21,7 +21,7 @@ function StatusSelect({ status }: StatusSelectProps) {
 
   return (
     <Select
-      required
+      required={required}
       isClearable={false}
       inputId="status"
       name="status"

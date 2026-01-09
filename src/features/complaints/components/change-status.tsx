@@ -49,7 +49,7 @@ function ChangeComplaintStatus({ complaint }: Props) {
         </span>
         <span>{t('changeStatus')}</span>
       </label>
-      <StatusSelect status={state.status} />
+      <StatusSelect status={state.status} required />
       {state.message === 'invalid-input' && (
         <p className="text-error text-sm">{t('invalid-input')}</p>
       )}

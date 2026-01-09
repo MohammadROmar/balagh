@@ -27,13 +27,14 @@ async function HomePage() {
                 <Image
                   src={logoImg}
                   alt=""
+                  aria-labelledby="login-title"
                   aria-hidden
-                  fill
-                  sizes="28px"
                   className="object-contain object-center"
                 />
               </div>
-              <h1 className="text-2xl font-bold">{t('title')}</h1>
+              <h1 id="login-title" className="text-2xl font-bold">
+                {t('title')}
+              </h1>
             </div>
 
             <div className="flex items-center gap-2">

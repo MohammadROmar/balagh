@@ -16,7 +16,7 @@ function Button({ pending, children, ...props }: ButtonProps) {
         props.className,
       )}
     >
-      {pending ? <LoadingIndicator className="w-6" /> : children}
+      {pending ? <LoadingIndicator className="w-6 text-white" /> : children}
     </button>
   );
 }

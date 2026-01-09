@@ -38,13 +38,13 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
             <Image
               src={logoImg}
               alt=""
-              aria-hidden
-              fill
-              sizes="28px"
+              aria-labelledby="session-cleanup-title"
               className="object-contain object-center"
             />
           </div>
-          <h1 className="text-2xl font-bold">{t('balagh')}</h1>
+          <h1 id="session-cleanup-title" className="text-2xl font-bold">
+            {t('balagh')}
+          </h1>
         </div>
 
         <div className="bg-teal/30 flex items-center justify-center rounded-full p-3">
@@ -56,7 +56,7 @@ function SessionCleanup({ hasUser }: SessionCleanupProps) {
           {t('subtitle')}
         </p>
 
-        <LoadingIndicator className="text-teal flex w-12 items-center justify-center" />
+        <LoadingIndicator className="text-emerald-green flex w-12 items-center justify-center" />
       </div>
     </section>
   );
