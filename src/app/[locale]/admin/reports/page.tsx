@@ -70,11 +70,23 @@ async function DataChart({ t, searchParms }: DataChartProps) {
                 <span className="font-semibold">{item.complaintCount}</span>
               </p>
             </div>
-            <div className="bg-primary-background h-10 w-full overflow-hidden rounded-full">
+
+            <p className="sr-only">{percentage}%</p>
+            <div
+              aria-hidden
+              className="bg-primary-background relative h-10 w-full overflow-hidden rounded-full"
+            >
               <div
-                className={`bg-gradient h-full rounded-full`}
+                className={`bg-gradient relative h-full overflow-hidden rounded-full`}
                 style={{ width: `${percentage}%` }}
-              />
+              >
+                <p className="absolute top-1/2 left-4 z-40 -translate-y-1/2 text-sm text-white dark:hidden">
+                  {percentage}%
+                </p>
+              </div>
+              <p className="absolute top-1/2 left-4 -translate-y-1/2 text-sm">
+                {percentage}%
+              </p>
             </div>
           </li>
         );

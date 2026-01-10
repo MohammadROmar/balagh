@@ -133,7 +133,7 @@ function ComplaintImage({ path }: { path: string }) {
           alt="Complaint image"
           fill
           sizes="(min-width: 48rem): 33.33vw, 50vw"
-          onLoadingComplete={() => setStatus('loaded')}
+          onLoad={() => setStatus('loaded')}
           onError={() => setStatus('error')}
           className="object-cover object-center"
         />

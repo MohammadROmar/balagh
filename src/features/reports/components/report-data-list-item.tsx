@@ -25,11 +25,23 @@ async function ReportDataListItem({
           <span className="text-emerald-green">{complaintCount}</span>
         </p>
       </div>
-      <div className="bg-primary-background h-8 w-full overflow-hidden rounded-full">
+
+      <p className="sr-only">{percentageStr}%</p>
+      <div
+        aria-hidden
+        className="bg-primary-background relative h-10 w-full overflow-hidden rounded-full"
+      >
         <div
-          className={`bg-gradient h-full rounded-full`}
+          className={`bg-gradient relative h-full overflow-hidden rounded-full`}
           style={{ width: `${percentageStr}%` }}
-        />
+        >
+          <p className="absolute top-1/2 left-4 z-40 -translate-y-1/2 text-sm text-white dark:hidden">
+            {percentageStr}%
+          </p>
+        </div>
+        <p className="absolute top-1/2 left-4 -translate-y-1/2 text-sm">
+          {percentageStr}%
+        </p>
       </div>
     </li>
   );

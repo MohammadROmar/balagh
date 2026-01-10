@@ -44,13 +44,13 @@ function ComplaintHistory({ t, histories }: Props) {
                     ) : (
                       <>
                         <span>{t('update')}</span>
-                        <span className="bg-warning-bg text-warning rounded-lg px-1 leading-none">
+                        <span className="bg-warning-bg text-warning rounded-lg px-1 leading-none wrap-break-word break-all">
                           {history.oldValue.replaceAll('"', '')}
                         </span>
                         <span>{t('to')}</span>
                       </>
                     )}
-                    <span className="bg-success-bg text-success rounded-lg px-1 leading-none">
+                    <span className="bg-success-bg text-success rounded-lg px-1 leading-none wrap-break-word break-all">
                       {history.newValue.replaceAll('"', '')}
                     </span>
                   </p>

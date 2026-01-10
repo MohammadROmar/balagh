@@ -24,7 +24,7 @@ async function ComplaintInfo({ complaint, t }: Props) {
   return (
     <ComplaintDetailsContainer title={t('info')} icon={InfoIcon}>
       <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 dark:divide-gray-600">
+        <div className="grid grid-cols-2 gap-4 divide-x divide-gray-300 wrap-break-word break-all dark:divide-gray-600">
           <Detail
             title={t('user')}
             value={complaint.userName}
@@ -85,8 +85,8 @@ function Detail({ title, value, icon: Icon }: DetailProps) {
   return (
     <div className="space-y-1">
       <div className="text-secondary flex items-center gap-1">
-        <Icon className="size-3" />
-        <h4 className="text-sm">{title}</h4>
+        <Icon className="size-3 shrink-0" />
+        <h4 className="text-sm break-keep">{title}</h4>
       </div>
       <p>{value}</p>
     </div>

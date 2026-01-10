@@ -41,6 +41,7 @@ async function LocaleLayout({ params, children }: LocaleLayoutProps) {
       dir={locale === 'en' ? 'ltr' : 'rtl'}
       suppressHydrationWarning
       className="scroll-smooth"
+      data-scroll-behavior="smooth"
     >
       <body
         className={`${fontVariables} ${locale === 'en' ? 'font-open-sans' : 'font-kufi'} selection:bg-emerald-green text-body bg-primary-background min-h-screen antialiased selection:text-white`}
