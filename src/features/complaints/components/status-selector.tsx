@@ -6,11 +6,19 @@ import clsx from 'clsx';
 
 import { complaintStatus } from '../models/status';
 import { selectorStyles } from '@/core/config/selector-styles';
-import { ComplaintStatus } from '../models/complaint';
+import type { ComplaintStatus } from '../models/complaint';
 
-type StatusSelectProps = { status?: string; required?: boolean };
+type StatusSelectProps = {
+  status?: string;
+  required?: boolean;
+  isClearable?: boolean;
+};
 
-function StatusSelect({ status, required = false }: StatusSelectProps) {
+function StatusSelect({
+  status,
+  required = false,
+  isClearable = false,
+}: StatusSelectProps) {
   const t = useTranslations('complaintsPage.details.statuses');
   const tSelect = useTranslations('select');
 
@@ -22,7 +30,7 @@ function StatusSelect({ status, required = false }: StatusSelectProps) {
   return (
     <Select
       required={required}
-      isClearable={false}
+      isClearable={isClearable}
       inputId="status"
       name="status"
       options={options}

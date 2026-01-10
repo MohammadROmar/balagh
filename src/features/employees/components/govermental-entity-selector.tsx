@@ -10,6 +10,7 @@ import type { GovermentalEntities } from '../models/govermental-entities';
 type Props = {
   hasDefaultValue?: boolean;
   required?: boolean;
+  isClearable?: boolean;
   title: string;
   govermentalEntities: GovermentalEntities | null;
 };
@@ -17,6 +18,7 @@ type Props = {
 function GovermentalEentitySelector({
   title,
   required = true,
+  isClearable = false,
   hasDefaultValue = true,
   govermentalEntities,
 }: Props) {
@@ -36,7 +38,7 @@ function GovermentalEentitySelector({
       </label>
       <Select
         required={required}
-        isClearable={false}
+        isClearable={isClearable}
         inputId="govermentalEntity"
         name="govermentalEntityId"
         options={options}

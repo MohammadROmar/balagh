@@ -33,7 +33,7 @@ function ByGovEntityFilters() {
           <label htmlFor="status" className="text-sm">
             {t('data.status')}
           </label>
-          <StatusSelect />
+          <StatusSelect isClearable />
         </div>
         <Input
           label={t('filters.location')}

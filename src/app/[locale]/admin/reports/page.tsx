@@ -80,11 +80,11 @@ async function DataChart({ t, searchParms }: DataChartProps) {
                 className={`bg-gradient relative h-full overflow-hidden rounded-full`}
                 style={{ width: `${percentage}%` }}
               >
-                <p className="absolute top-1/2 left-4 z-40 -translate-y-1/2 text-sm text-white dark:hidden">
+                <p className="absolute top-1/2 z-40 -translate-y-1/2 text-sm text-white ltr:left-4 rtl:right-4 dark:hidden">
                   {percentage}%
                 </p>
               </div>
-              <p className="absolute top-1/2 left-4 -translate-y-1/2 text-sm">
+              <p className="absolute top-1/2 -translate-y-1/2 text-sm ltr:left-4 rtl:right-4">
                 {percentage}%
               </p>
             </div>

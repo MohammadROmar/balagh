@@ -33,6 +33,7 @@ function ByStatusFilters({ govermentalEntities }: Props) {
           className="bg-primary-background!"
         />
         <GovermentalEentitySelector
+          isClearable
           required={false}
           hasDefaultValue={false}
           title={t('filters.govermentalEntityId')}

@@ -23,9 +23,10 @@ function ByTimeFilters({ govermentalEntities }: Props) {
           <label htmlFor="status" className="text-sm">
             {t('data.status')}
           </label>
-          <StatusSelect />
+          <StatusSelect isClearable />
         </div>
         <GovermentalEentitySelector
+          isClearable
           required={false}
           hasDefaultValue={false}
           title={t('filters.govermentalEntityId')}
